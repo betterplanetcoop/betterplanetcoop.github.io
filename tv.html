@@ -166,7 +166,7 @@
     }
 
     .video-section-dark {
-      background: #0a0a0f;
+      background: linear-gradient(to bottom, rgba(135, 206, 235, 0.3) 0%, rgba(135, 206, 235, 0.1) 20%, #0a0a0f 100%);
       padding-top: calc(var(--spacing-2xl) + 90px);
       padding-bottom: var(--spacing-2xl);
       position: relative;
@@ -240,9 +240,9 @@
     }
     
     .filter-btn.active {
-      background: rgba(255, 255, 255, 0.15);
+      background: var(--color-golden);
       color: white;
-      border-color: rgba(255, 255, 255, 1);
+      border-color: var(--color-golden);
     }
     
     /* Video Grid */
@@ -380,22 +380,22 @@
         
         <!-- Featured Partners -->
         <div class="featured-section fade-in-up">
-          <div class="featured-heading">Featured Partners & Campaigns</div>
+          <div class="featured-heading">Featured Campaigns</div>
           <div class="featured-cards">
             <div class="featured-card">
-              <h3>🌍 Gaia</h3>
-              <p>Agentic Environmental Sustainability Coach</p>
-              <p style="font-size: 0.85rem; margin: 0;">Learn about sustainable practices and environmental action.</p>
-            </div>
-            <div class="featured-card">
-              <h3>☀️ Sol AI</h3>
-              <p>Safe AI Wellness Coach</p>
-              <a href="https://www.agenticsgrowthlab.com/karmabuzz" target="_blank" class="btn btn-secondary">Explore Sol</a>
-            </div>
-            <div class="featured-card">
-              <h3>🌱 30 Days for the Planet</h3>
-              <p>Daily challenges for planetary action</p>
+              <h3>🌏30 Days for the Planet</h3>
+              <p>Make small changes to support big environmental sustainability</p>
               <a href="https://www.agenticsgrowthlab.com/30-days-for-the-planet" target="_blank" class="btn btn-secondary">Join Challenge</a>
+            </div>
+            <div class="featured-card">
+              <h3>Like the fanciest hotels, meet your favorite new Chief of Staff</h3>
+              <p>Try Gaia - Agentic Environmental Sustainability Coach</p>
+              <a href="https://www.agenticsgrowthlab.com/30-days-for-the-planet" target="_blank" class="btn btn-secondary">Try Gaia</a>
+            </div>
+            <div class="featured-card">
+              <h3>🌏Feel the Relief</h3>
+              <p>Safe, moral, legal first by limiting sources to: internationally accepted legal information, medically peer reviewed information - no social media influence</p>
+              <a href="https://www.agenticsgrowthlab.com/karmabuzz" target="_blank" class="btn btn-secondary">Try Sol</a>
             </div>
           </div>
         </div>
@@ -571,11 +571,11 @@
         filterControls.appendChild(btn);
       });
       // Set default active filter
-      const defaultBtn = document.querySelector('[data-filter="World Peace"]');
+      const defaultBtn = document.querySelector('[data-filter="Food Security"]');
       if (defaultBtn) {
         defaultBtn.classList.add('active');
       }
-      function renderVideos(category = 'all') {
+      function renderVideos(category = 'Food Security') {
         videoGrid.innerHTML = '';
         let videoCount = 0;
 
@@ -593,7 +593,8 @@
                     src="https://www.youtube.com/embed/${video.id}?rel=0" 
                     title="${video.title}"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
+                    allowfullscreen
+                    loading="lazy">
                   </iframe>
                 </div>
                 <div class="video-info">
