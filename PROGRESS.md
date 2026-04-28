@@ -115,5 +115,25 @@ Building a multi-page mission-driven website for BetterPlanet Inc (501c3 nonprof
 - Enable GitHub Pages in repository settings
 - Live site URL: https://betterplanetcoop.github.io
 
-### Last Updated: April 27, 2026 - BUILD COMPLETE ✅
-### Current Phase: Ready for GitHub Pages Deployment
+### Last Updated: April 28, 2026 - ENHANCEMENTS APPLIED ✅
+### Current Phase: Visual Polish & Improvements
+
+### Recent Enhancements (April 28, 2026):
+- **tv.html Cloud Effects Enhanced:**
+  - Upgraded cloud rendering with radial gradients and box-shadows for more nebulous, realistic appearance
+  - Increased cloud width to 700-900px for full-width drifting effect
+  - Enhanced blur filters (15px/20px) for softer, more atmospheric look
+  - Changed animation trajectory from -300% to -100vw for proper full-width drift
+  - Extended animation durations (180s-240s) for slower, more relaxed movement
+  - Improved pseudo-element styling for better cloud composition
+  
+- **BetterPlanet TV Heading Styling:**
+  - Added white color to h1 in video-section-dark section for visibility on dark background
+  - Ensured subtitle text also displays in white for proper contrast
+  
+- **Shop Button Text Visibility:**
+  - Ensured white text color is applied with !important to maintain visibility
+  - Verified button styling consistency across the page
+
+**Commit:** "Enhance clouds with nebulous effects, make BetterPlanet TV heading white, ensure Shop button text is white"
+**Pushed to:** https://github.com/betterplanetcoop/betterplanetcoop.github.io
