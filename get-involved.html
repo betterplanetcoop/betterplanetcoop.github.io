@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Involved | Partner with BetterPlanet</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--spacing-lg);
+      margin: var(--spacing-2xl) 0;
+    }
+    
+    .tier-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border-top: 4px solid var(--color-teal);
+    }
+    
+    .tier-card:nth-child(2) {
+      border-top-color: var(--color-forest-green);
+    }
+    
+    .tier-card:nth-child(3) {
+      border-top-color: var(--color-golden);
+    }
+    
+    .tier-card:nth-child(4) {
+      border-top-color: var(--color-teal);
+    }
+    
+    .tier-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .tier-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .tier-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-forest-green);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .tier-price {
+      font-size: 1.1rem;
+      color: var(--color-teal);
+      font-weight: 600;
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .tier-features {
+      list-style: none;
+      margin-bottom: var(--spacing-lg);
+      flex-grow: 1;
+    }
+    
+    .tier-features li {
+      padding: var(--spacing-sm) 0;
+      color: var(--color-text-dark);
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.95rem;
+    }
+    
+    .tier-features li:last-child {
+      border-bottom: none;
+    }
+    
+    .tier-features li::before {
+      content: '✓ ';
+      color: var(--color-golden);
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    
+    /* Other Ways Section */
+    .other-ways-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--spacing-lg);
+      margin: var(--spacing-2xl) 0;
+    }
+    
+    .way-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+    }
+    
+    .way-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .way-icon {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .way-card h3 {
+      color: var(--color-forest-green);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .way-card p {
+      color: var(--color-text-light);
+      font-size: 0.95rem;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    /* Contact Form */
+    .contact-section {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-md);
+      max-width: 600px;
+      margin: var(--spacing-2xl) auto;
+    }
+    
+    .contact-section h2 {
+      text-align: center;
+      color: var(--color-forest-green);
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .form-group label {
+      color: var(--color-forest-green);
+    }
+    
+    .form-message {
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-lg);
+      display: none;
+    }
+    
+    .form-message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+    
+    .form-message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--spacing-2xl);
+    }
+    
+    .section-header h2 {
+      color: var(--color-forest-green);
+    }
+    
+    .section-header p {
+      color: var(--color-text-light);
+      font-size: 1.05rem;
+    }
+    
+    .info-banner {
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.1), rgba(0, 180, 160, 0.1));
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      margin: var(--spacing-2xl) 0;
+      text-align: center;
+      border-left: 4px solid var(--color-forest-green);
+    }
+    
+    .info-banner p {
+      margin: 0;
+      color: var(--color-text-dark);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">🌍 BetterPlanet Co-op</a>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tv.html">Watch</a></li>
+          <li><a href="tools.html">Tools</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank" class="btn btn-primary">Shop</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Partnership Tiers -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h1>Turn Corporate Giving Into Visible Action</h1>
+          <p>Partner with BetterPlanet to create mission-aligned campaigns and make real impact</p>
+        </div>
+        
+        <div class="tier-grid fade-in-up">
+          <!-- Green Level -->
+          <div class="tier-card">
+            <div class="tier-icon">🌿</div>
+            <div class="tier-name">Green Level</div>
+            <div class="tier-price">Free Trial</div>
+            <ul class="tier-features">
+              <li>Charitable contribution supporting environmental sustainability</li>
+              <li>Participation in next campaign</li>
+              <li>BetterPlanet Seal</li>
+              <li>Perfect for exploring partnership</li>
+            </ul>
+            <a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank" class="btn btn-outline">Get Started</a>
+          </div>
+          
+          <!-- Community Partner -->
+          <div class="tier-card">
+            <div class="tier-icon">🌱</div>
+            <div class="tier-name">Community Partner</div>
+            <div class="tier-price">$1,000 – $5,000</div>
+            <ul class="tier-features">
+              <li>Recognition on partner page</li>
+              <li>Social media thank-you posts</li>
+              <li>Mission campaign participation</li>
+              <li>Logo on campaign page</li>
+              <li>Annual impact report</li>
+            </ul>
+            <a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank" class="btn btn-primary">Become a Partner</a>
+          </div>
+          
+          <!-- Impact Partner -->
+          <div class="tier-card">
+            <div class="tier-icon">🌎</div>
+            <div class="tier-name">Impact Partner</div>
+            <div class="tier-price">$10,000 – $25,000</div>
+            <ul class="tier-features">
+              <li>Dedicated mission campaign aligned to your values</li>
+              <li>Featured mission sponsorship</li>
+              <li>Campaign storytelling & content creation</li>
+              <li>Premium logo placement</li>
+              <li>Social media & PR promotion</li>
+            </ul>
+            <a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank" class="btn btn-primary">Explore Partnership</a>
+          </div>
+          
+          <!-- Global Mission Partner -->
+          <div class="tier-card">
+            <div class="tier-icon">☀️</div>
+            <div class="tier-name">Global Mission Partner</div>
+            <div class="tier-price">$50,000 – $100,000+</div>
+            <ul class="tier-features">
+              <li>Flagship BetterPlanet campaign</li>
+              <li>Custom campaign page dedicated to your mission</li>
+              <li>Leadership recognition & visibility</li>
+              <li>Press release & media exposure</li>
+              <li>Quarterly impact reports</li>
+              <li>Strategic partnership advisory</li>
+            </ul>
+            <a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank" class="btn btn-primary">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Ways to Get Involved -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Other Ways to Get Involved</h2>
+          <p>Beyond partnership tiers, there are many ways to contribute to the mission</p>
+        </div>
+        
+        <div class="other-ways-grid fade-in-up">
+          <div class="way-card">
+            <div class="way-icon">🤝</div>
+            <h3>Volunteer</h3>
+            <p>Join our team and contribute your skills and passion to creating change.</p>
+            <a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank" class="btn btn-secondary">Learn More</a>
+          </div>
+          
+          <div class="way-card">
+            <div class="way-icon">💼</div>
+            <h3>Contractor</h3>
+            <p>Work with us on specific projects aligned to our mission. Let's collaborate.</p>
+            <a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank" class="btn btn-secondary">Get Started</a>
+          </div>
+          
+          <div class="way-card">
+            <div class="way-icon">🎯</div>
+            <h3>Board Member</h3>
+            <p>Strategic guidance and leadership for our nonprofit's direction and growth.</p>
+            <a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank" class="btn btn-secondary">Apply</a>
+          </div>
+          
+          <div class="way-card">
+            <div class="way-icon">👋</div>
+            <h3>Introduce Yourself</h3>
+            <p>Have a unique way to contribute? Share your ideas and let's explore together.</p>
+            <a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank" class="btn btn-secondary">Start a Conversation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Banner -->
+    <section class="section">
+      <div class="container">
+        <div class="info-banner fade-in-up">
+          <p><strong>🎁 All purchases and donations are tax-deductible</strong></p>
+          <p style="margin-top: var(--spacing-sm); font-size: 0.95rem;">
+            <strong>BetterPlanet Inc©</strong> EIN: 93-2053353 | Registered 501(c)(3) Nonprofit
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="section">
+      <div class="container">
+        <div class="contact-section fade-in-up">
+          <h2>Have Questions?</h2>
+          <div class="form-message" id="formMessage"></div>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="organization">Organization</label>
+              <input type="text" id="organization" name="organization">
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>BetterPlanet Co-op</h3>
+          <p>Creating mission-driven entertainment, tools, and education for a better world.</p>
+          <p><strong>Email:</strong> <a href="mailto:nicole@betterplanet.org">nicole@betterplanet.org</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tv.html">Watch & Scroll</a></li>
+            <li><a href="tools.html">Wellbeing Tools</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Get Involved</h3>
+          <ul>
+            <li><a href="get-involved.html">Partnership Tiers</a></li>
+            <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank">Shop</a></li>
+            <li><a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank">Introduce Yourself</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><strong>BetterPlanet Inc©</strong> is a registered 501(c)(3) charity. <strong>EIN: 93-2053353</strong></p>
+        <p>All profits from sales are donated to charity. Donations are tax-deductible.</p>
+        <p>&copy; 2026 BetterPlanet Co-op. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Contact form handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const organization = document.getElementById('organization').value;
+      const message = document.getElementById('message').value;
+      
+      // Build mailto link
+      const subject = encodeURIComponent('BetterPlanet Inquiry from ' + name);
+      const body = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Organization: ${organization}\n\n` +
+        `Message:\n${message}`
+      );
+      
+      const mailtoLink = `mailto:nicole@betterplanet.org?subject=${subject}&body=${body}`;
+      
+      // Open default email client
+      window.location.href = mailtoLink;
+      
+      // Show success message
+      const messageDiv = document.getElementById('formMessage');
+      messageDiv.classList.add('success');
+      messageDiv.textContent = 'Thank you! Opening your email client to send your message...';
+      
+      // Reset form
+      this.reset();
+    });
+  </script>
+</body>
+</html>

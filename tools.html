@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wellbeing Tools | BetterPlanet</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tools-container {
+      display: grid;
+      gap: var(--spacing-2xl);
+    }
+    
+    .tool-section {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .tool-header {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+      padding-bottom: var(--spacing-lg);
+      border-bottom: 2px solid var(--color-border);
+    }
+    
+    .tool-icon-large {
+      font-size: 3rem;
+      line-height: 1;
+    }
+    
+    .tool-header h2 {
+      color: var(--color-forest-green);
+      margin-bottom: 0;
+    }
+    
+    .tool-header p {
+      color: var(--color-text-light);
+      margin: 0;
+    }
+    
+    /* Gratitude Journal */
+    .journal-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+    }
+    
+    @media (max-width: 1024px) {
+      .journal-content {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .journal-input {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .journal-input textarea {
+      min-height: 200px;
+      padding: var(--spacing-md);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      resize: vertical;
+    }
+    
+    .journal-input textarea:focus {
+      border-color: var(--color-teal);
+      outline: none;
+    }
+    
+    .journal-entry-list {
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.05), rgba(0, 180, 160, 0.05));
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      max-height: 500px;
+      overflow-y: auto;
+    }
+    
+    .journal-entry-list h3 {
+      color: var(--color-forest-green);
+      margin-bottom: var(--spacing-lg);
+      font-size: 1.1rem;
+    }
+    
+    .journal-entry {
+      background: white;
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--color-golden);
+      position: relative;
+    }
+    
+    .journal-entry-date {
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .journal-entry-text {
+      color: var(--color-text-dark);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .journal-entry-delete {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: bold;
+      transition: all var(--transition-fast);
+    }
+    
+    .journal-entry-delete:hover {
+      background: #ff5252;
+      transform: scale(1.1);
+    }
+    
+    .empty-message {
+      color: var(--color-text-light);
+      text-align: center;
+      padding: var(--spacing-lg);
+      font-style: italic;
+    }
+    
+    /* Thank You Notes */
+    .thankyou-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+    }
+    
+    @media (max-width: 1024px) {
+      .thankyou-content {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .template-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .template-btn {
+      padding: var(--spacing-md);
+      border: 2px solid var(--color-border);
+      background: white;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-align: left;
+      transition: all var(--transition-base);
+      font-weight: 500;
+    }
+    
+    .template-btn:hover {
+      border-color: var(--color-teal);
+      background: rgba(0, 180, 160, 0.05);
+    }
+    
+    .template-btn.active {
+      background: var(--color-forest-green);
+      color: white;
+      border-color: var(--color-forest-green);
+    }
+    
+    .note-editor {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .note-editor textarea {
+      min-height: 250px;
+      padding: var(--spacing-md);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      resize: vertical;
+    }
+    
+    .note-editor textarea:focus {
+      border-color: var(--color-teal);
+      outline: none;
+    }
+    
+    .button-group {
+      display: flex;
+      gap: var(--spacing-md);
+    }
+    
+    .button-group button {
+      flex: 1;
+    }
+    
+    /* MeTime Scheduler */
+    .scheduler-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+    
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--spacing-md);
+    }
+    
+    @media (max-width: 768px) {
+      .week-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .day-column {
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.05), rgba(0, 180, 160, 0.05));
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md);
+      min-height: 300px;
+    }
+    
+    .day-name {
+      font-weight: 700;
+      color: var(--color-forest-green);
+      margin-bottom: var(--spacing-md);
+      text-align: center;
+      font-size: 1.05rem;
+    }
+    
+    .day-slots {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      min-height: 250px;
+    }
+    
+    .time-slot {
+      background: white;
+      border: 2px dashed var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: var(--spacing-sm);
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      font-size: 0.9rem;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .time-slot:hover {
+      border-color: var(--color-teal);
+      background: rgba(0, 180, 160, 0.1);
+    }
+    
+    .time-slot.scheduled {
+      background: linear-gradient(135deg, var(--color-teal), var(--color-golden));
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+    
+    .time-slot.scheduled:hover {
+      opacity: 0.9;
+    }
+    
+    .remove-btn {
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    
+    .remove-btn:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
+    
+    .time-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .time-option-btn {
+      padding: var(--spacing-sm);
+      border: 2px solid var(--color-border);
+      background: white;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: 500;
+      transition: all var(--transition-base);
+    }
+    
+    .time-option-btn:hover {
+      border-color: var(--color-golden);
+      background: rgba(244, 162, 97, 0.1);
+    }
+    
+    .time-option-btn.active {
+      background: var(--color-golden);
+      color: white;
+      border-color: var(--color-golden);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--spacing-2xl);
+    }
+    
+    .section-header h1 {
+      color: var(--color-forest-green);
+    }
+    
+    .section-header p {
+      color: var(--color-text-light);
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">🌍 BetterPlanet Co-op</a>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tv.html">Watch</a></li>
+          <li><a href="tools.html">Tools</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank" class="btn btn-primary">Shop</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Page Header -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h1>Tools for Your Best Life</h1>
+          <p>Free digital tools designed to help you slow down, reflect, and feel better — the antidote to doomscrolling</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="section">
+      <div class="container">
+        <div class="tools-container">
+          <!-- TOOL 1: Digital Gratitude Journal -->
+          <div class="tool-section fade-in-up" id="gratitude">
+            <div class="tool-header">
+              <div class="tool-icon-large">📔</div>
+              <div>
+                <h2>Digital Gratitude Journal</h2>
+                <p>Write and save daily gratitude entries to reflect on what matters most</p>
+              </div>
+            </div>
+            
+            <div class="journal-content">
+              <div class="journal-input">
+                <label for="gratitudeInput" style="font-weight: 600; color: var(--color-forest-green);">What are you grateful for today?</label>
+                <textarea id="gratitudeInput" placeholder="Write your gratitude entry here... Your entries are saved automatically to your device."></textarea>
+                <button class="btn btn-primary" onclick="saveGratitudeEntry()">Save Entry</button>
+              </div>
+              
+              <div class="journal-entry-list">
+                <h3>📚 Your Entries</h3>
+                <div id="gratitudeList" class="empty-message">No entries yet. Start by writing your first gratitude moment!</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOOL 2: Thank You Notes -->
+          <div class="tool-section fade-in-up" id="thankyou">
+            <div class="tool-header">
+              <div class="tool-icon-large">💌</div>
+              <div>
+                <h2>Thank You Notes</h2>
+                <p>Write heartfelt thank you notes with warm templates to inspire you</p>
+              </div>
+            </div>
+            
+            <div class="thankyou-content">
+              <div class="template-buttons">
+                <label style="font-weight: 600; color: var(--color-forest-green); margin-bottom: var(--spacing-sm);">Choose a template:</label>
+                <button class="template-btn active" onclick="loadTemplate(0)" data-template="0">
+                  <strong>🌟 General Thanks</strong>
+                  <div style="font-size: 0.85rem; color: #666; margin-top: 4px;">For anyone special in your life</div>
+                </button>
+                <button class="template-btn" onclick="loadTemplate(1)" data-template="1">
+                  <strong>💼 Professional</strong>
+                  <div style="font-size: 0.85rem; color: #666; margin-top: 4px;">For mentors and colleagues</div>
+                </button>
+                <button class="template-btn" onclick="loadTemplate(2)" data-template="2">
+                  <strong>💜 Family & Friends</strong>
+                  <div style="font-size: 0.85rem; color: #666; margin-top: 4px;">For close relationships</div>
+                </button>
+                <button class="template-btn" onclick="loadTemplate(3)" data-template="3">
+                  <strong>🎯 Specific Act</strong>
+                  <div style="font-size: 0.85rem; color: #666; margin-top: 4px;">For a specific kindness</div>
+                </button>
+                <button class="template-btn" onclick="loadTemplate(4)" data-template="4">
+                  <strong>🙏 Spiritual Thanks</strong>
+                  <div style="font-size: 0.85rem; color: #666; margin-top: 4px;">Gratitude for guidance & support</div>
+                </button>
+              </div>
+              
+              <div class="note-editor">
+                <label for="noteContent" style="font-weight: 600; color: var(--color-forest-green);">Your Thank You Note</label>
+                <textarea id="noteContent" placeholder="Your note will appear here. Edit as needed!"></textarea>
+                <div class="button-group">
+                  <button class="btn btn-primary" onclick="copyToClipboard()">📋 Copy</button>
+                  <button class="btn btn-secondary" onclick="downloadNote()">⬇️ Download</button>
+                  <button class="btn btn-accent" onclick="emailNote()">📧 Send</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOOL 3: MeTime Scheduler -->
+          <div class="tool-section fade-in-up" id="metime">
+            <div class="tool-header">
+              <div class="tool-icon-large">⏰</div>
+              <div>
+                <h2>MeTime Scheduler</h2>
+                <p>Block personal time for yourself. Protect your wellbeing every week</p>
+              </div>
+            </div>
+            
+            <div class="scheduler-content">
+              <div>
+                <p style="color: var(--color-text-light); margin-bottom: var(--spacing-lg);">
+                  Click on time slots below to schedule your MeTime. Choose how long each block is:
+                </p>
+                <div class="time-options" id="timeOptions">
+                  <button class="time-option-btn active" onclick="setTimeDuration(30)">30 min</button>
+                  <button class="time-option-btn" onclick="setTimeDuration(60)">1 hour</button>
+                  <button class="time-option-btn" onclick="setTimeDuration(90)">1.5 hours</button>
+                </div>
+              </div>
+              
+              <div class="week-grid" id="weekGrid">
+                <!-- Days will be generated by JavaScript -->
+              </div>
+              
+              <div style="text-align: center; margin-top: var(--spacing-lg);">
+                <button class="btn btn-outline" onclick="clearAllSchedule()">Clear All MeTime</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="section section-alt">
+      <div class="container">
+        <div style="text-align: center; padding: var(--spacing-xl); background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+          <h2 style="color: var(--color-forest-green);">Your Data, Your Control</h2>
+          <p style="color: var(--color-text-light); margin-bottom: 0;">
+            All tools save to your device locally using browser storage. We don't collect, store, or sell any of your personal data. 
+            Your entries are completely private and can be cleared anytime.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>BetterPlanet Co-op</h3>
+          <p>Creating mission-driven entertainment, tools, and education for a better world.</p>
+          <p><strong>Email:</strong> <a href="mailto:nicole@betterplanet.org">nicole@betterplanet.org</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tv.html">Watch & Scroll</a></li>
+            <li><a href="tools.html">Wellbeing Tools</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Get Involved</h3>
+          <ul>
+            <li><a href="get-involved.html">Partnership Tiers</a></li>
+            <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank">Shop</a></li>
+            <li><a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank">Introduce Yourself</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><strong>BetterPlanet Inc©</strong> is a registered 501(c)(3) charity. <strong>EIN: 93-2053353</strong></p>
+        <p>All profits from sales are donated to charity. Donations are tax-deductible.</p>
+        <p>&copy; 2026 BetterPlanet Co-op. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ==================== GRATITUDE JOURNAL ====================
+    function saveGratitudeEntry() {
+      const input = document.getElementById('gratitudeInput');
+      const text = input.value.trim();
+      
+      if (!text) {
+        alert('Please write something before saving!');
+        return;
+      }
+      
+      const entries = Storage.get('gratitudeEntries') || [];
+      const entry = {
+        date: new Date().toLocaleDateString('en-US', { 
+          year: 'numeric', 
+          month: 'short', 
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        }),
+        text: text
+      };
+      
+      entries.unshift(entry);
+      Storage.set('gratitudeEntries', entries);
+      
+      input.value = '';
+      renderGratitudeEntries();
+    }
+    
+    function renderGratitudeEntries() {
+      const entries = Storage.get('gratitudeEntries') || [];
+      const listDiv = document.getElementById('gratitudeList');
+      
+      if (entries.length === 0) {
+        listDiv.innerHTML = '<div class="empty-message">No entries yet. Start by writing your first gratitude moment!</div>';
+        return;
+      }
+      
+      listDiv.innerHTML = '';
+      entries.forEach((entry, index) => {
+        const entryDiv = document.createElement('div');
+        entryDiv.className = 'journal-entry';
+        entryDiv.innerHTML = `
+          <div class="journal-entry-date">${entry.date}</div>
+          <div class="journal-entry-text">${entry.text.replace(/\n/g, '<br>')}</div>
+          <button class="journal-entry-delete" onclick="deleteEntry(${index})">✕</button>
+        `;
+        listDiv.appendChild(entryDiv);
+      });
+    }
+    
+    function deleteEntry(index) {
+      if (confirm('Delete this entry?')) {
+        let entries = Storage.get('gratitudeEntries') || [];
+        entries.splice(index, 1);
+        Storage.set('gratitudeEntries', entries);
+        renderGratitudeEntries();
+      }
+    }
+    
+    // ==================== THANK YOU NOTES ====================
+    const templates = [
+      `Dear [Name],
+
+I wanted to take a moment to express my heartfelt gratitude for you. Having you in my life brings warmth and meaning that I don't always take time to acknowledge.
+
+Thank you for being such an important part of my journey.
+
+With deep appreciation,
+[Your Name]`,
+
+      `Dear [Name],
+
+I wanted to reach out and thank you for the tremendous support and guidance you've shown me. Your mentorship and professionalism have made a real difference in my growth.
+
+I truly value our working relationship.
+
+Best regards,
+[Your Name]`,
+
+      `Dear [Name],
+
+I'm so grateful to have you in my life. Your love, support, and presence mean everything to me. Thank you for being there through it all.
+
+With all my love,
+[Your Name]`,
+
+      `Dear [Name],
+
+I wanted to thank you for [specific act]. It meant so much to me, and I truly appreciate your kindness and thoughtfulness.
+
+You've made my day brighter.
+
+Gratefully,
+[Your Name]`,
+
+      `Dear [Name],
+
+Thank you for the wisdom, guidance, and spiritual support you've shared with me. Your presence in my life has been a blessing, and I'm deeply grateful for the way you help me grow.
+
+With reverence and appreciation,
+[Your Name]`
+    ];
+    
+    function loadTemplate(index) {
+      document.getElementById('noteContent').value = templates[index];
+      
+      // Update active button
+      document.querySelectorAll('.template-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+      });
+    }
+    
+    function copyToClipboard() {
+      const textarea = document.getElementById('noteContent');
+      textarea.select();
+      document.execCommand('copy');
+      
+      const btn = event.target;
+      const original = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => {
+        btn.textContent = original;
+      }, 2000);
+    }
+    
+    function downloadNote() {
+      const text = document.getElementById('noteContent').value;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'thank-you-note.txt';
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+    
+    function emailNote() {
+      const text = document.getElementById('noteContent').value;
+      const subject = encodeURIComponent('A Thank You Note');
+      const body = encodeURIComponent(text);
+      window.open(`mailto:?subject=${subject}&body=${body}`);
+    }
+    
+    // ==================== METIME SCHEDULER ====================
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    let currentDuration = 30;
+    
+    function setTimeDuration(minutes) {
+      currentDuration = minutes;
+      
+      // Update active button
+      document.querySelectorAll('.time-option-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+    
+    function initScheduler() {
+      const weekGrid = document.getElementById('weekGrid');
+      weekGrid.innerHTML = '';
+      
+      const schedule = Storage.get('mTimeSchedule') || {};
+      
+      days.forEach(day => {
+        const column = document.createElement('div');
+        column.className = 'day-column';
+        column.innerHTML = `<div class="day-name">${day}</div><div class="day-slots" id="slots-${day}"></div>`;
+        weekGrid.appendChild(column);
+        
+        const slots = document.getElementById(`slots-${day}`);
+        const daySchedule = schedule[day] || [];
+        
+        // Create time slots (6 slots per day for morning to evening)
+        const times = ['Morning', 'Late Morning', 'Afternoon', 'Early Evening', 'Evening', 'Night'];
+        times.forEach((time, idx) => {
+          const slot = document.createElement('div');
+          slot.className = 'time-slot';
+          
+          const slotId = `${day}-${idx}`;
+          if (daySchedule.includes(slotId)) {
+            const duration = currentDuration === 30 ? '30min' : currentDuration === 60 ? '1hr' : '1.5hr';
+            slot.classList.add('scheduled');
+            slot.innerHTML = `<span style="flex: 1;">${time} (${duration})</span><button class="remove-btn" onclick="removeSlot('${slotId}')">✕</button>`;
+          } else {
+            slot.textContent = time;
+            slot.onclick = () => scheduleSlot(slotId, time);
+          }
+          slots.appendChild(slot);
+        });
+      });
+    }
+    
+    function scheduleSlot(slotId, time) {
+      const [day, idx] = slotId.split('-');
+      const schedule = Storage.get('mTimeSchedule') || {};
+      
+      if (!schedule[day]) {
+        schedule[day] = [];
+      }
+      
+      if (!schedule[day].includes(slotId)) {
+        schedule[day].push(slotId);
+      }
+      
+      Storage.set('mTimeSchedule', schedule);
+      initScheduler();
+    }
+    
+    function removeSlot(slotId) {
+      const [day] = slotId.split('-');
+      const schedule = Storage.get('mTimeSchedule') || {};
+      
+      if (schedule[day]) {
+        schedule[day] = schedule[day].filter(s => s !== slotId);
+      }
+      
+      Storage.set('mTimeSchedule', schedule);
+      initScheduler();
+    }
+    
+    function clearAllSchedule() {
+      if (confirm('Clear all MeTime blocks for the week?')) {
+        Storage.remove('mTimeSchedule');
+        initScheduler();
+      }
+    }
+    
+    // ==================== INITIALIZATION ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      renderGratitudeEntries();
+      loadTemplate(0);
+      initScheduler();
+    });
+  </script>
+</body>
+</html>

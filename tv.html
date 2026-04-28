@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterPlanet TV | Mission-Driven Entertainment</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .featured-section {
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.1), rgba(0, 180, 160, 0.1));
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      margin-bottom: var(--spacing-2xl);
+    }
+    
+    .featured-heading {
+      color: var(--color-forest-green);
+      font-size: 1.3rem;
+      margin-bottom: var(--spacing-lg);
+      font-weight: 600;
+    }
+    
+    .featured-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .featured-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+    }
+    
+    .featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .featured-card h3 {
+      color: var(--color-forest-green);
+      margin-bottom: var(--spacing-md);
+      font-size: 1.1rem;
+    }
+    
+    .featured-card p {
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    /* Filter Controls */
+    .filter-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-2xl);
+      justify-content: center;
+    }
+    
+    .filter-btn {
+      padding: var(--spacing-sm) var(--spacing-lg);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: white;
+      color: var(--color-text-dark);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      font-size: 0.95rem;
+    }
+    
+    .filter-btn:hover {
+      border-color: var(--color-teal);
+      color: var(--color-teal);
+    }
+    
+    .filter-btn.active {
+      background: var(--color-forest-green);
+      color: white;
+      border-color: var(--color-forest-green);
+    }
+    
+    /* Video Grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-2xl);
+    }
+    
+    @media (max-width: 1024px) {
+      .video-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .video-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+    }
+    
+    .video-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .video-thumbnail {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #000;
+      overflow: hidden;
+    }
+    
+    .video-thumbnail iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .video-info {
+      padding: var(--spacing-md);
+    }
+    
+    .video-category {
+      display: inline-block;
+      background: var(--color-golden);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .video-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-forest-green);
+      line-height: 1.4;
+      margin-bottom: var(--spacing-sm);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .video-hidden {
+      display: none;
+    }
+    
+    .no-results {
+      text-align: center;
+      padding: var(--spacing-2xl);
+      color: var(--color-text-light);
+      grid-column: 1 / -1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">🌍 BetterPlanet Co-op</a>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tv.html">Watch</a></li>
+          <li><a href="tools.html">Tools</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank" class="btn btn-primary">Shop</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section">
+      <div class="container">
+        <!-- Page Header -->
+        <div class="section-header">
+          <h1>BetterPlanet TV</h1>
+          <p>Simple Ways to Change the Narrative</p>
+          <p style="font-size: 1rem; margin-top: var(--spacing-md);">Scroll through mission-aligned entertainment instead of doomscrolling. Every video supports one of our 11 pillars.</p>
+        </div>
+        
+        <!-- Featured Partners -->
+        <div class="featured-section fade-in-up">
+          <div class="featured-heading">Featured Partners & Campaigns</div>
+          <div class="featured-cards">
+            <div class="featured-card">
+              <h3>🌍 Gaia</h3>
+              <p>Agentic Environmental Sustainability Coach</p>
+              <p style="font-size: 0.85rem; margin: 0;">Learn about sustainable practices and environmental action.</p>
+            </div>
+            <div class="featured-card">
+              <h3>☀️ Sol AI</h3>
+              <p>Safe AI Wellness Coach</p>
+              <a href="https://www.agenticsgrowthlab.com/karmabuzz" target="_blank" class="btn btn-secondary">Explore Sol</a>
+            </div>
+            <div class="featured-card">
+              <h3>🌱 30 Days for the Planet</h3>
+              <p>Daily challenges for planetary action</p>
+              <a href="https://www.agenticsgrowthlab.com/30-days-for-the-planet" target="_blank" class="btn btn-secondary">Join Challenge</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Filter Controls -->
+        <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+          <p style="color: var(--color-text-light); margin-bottom: var(--spacing-md);">Filter by category:</p>
+        </div>
+        <div class="filter-controls" id="filterControls">
+          <button class="filter-btn active" data-filter="all">All Videos</button>
+        </div>
+        
+        <!-- Video Grid -->
+        <div class="video-grid" id="videoGrid">
+          <!-- Videos will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>BetterPlanet Co-op</h3>
+          <p>Mission-driven entertainment that changes the narrative.</p>
+          <p><strong>Email:</strong> <a href="mailto:nicole@betterplanet.org">nicole@betterplanet.org</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tv.html">Watch & Scroll</a></li>
+            <li><a href="tools.html">Wellbeing Tools</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Get Involved</h3>
+          <ul>
+            <li><a href="get-involved.html">Partnership Tiers</a></li>
+            <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank">Shop</a></li>
+            <li><a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank">Introduce Yourself</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><strong>BetterPlanet Inc©</strong> is a registered 501(c)(3) charity. <strong>EIN: 93-2053353</strong></p>
+        <p>All profits from sales are donated to charity. Donations are tax-deductible.</p>
+        <p>&copy; 2026 BetterPlanet Co-op. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Video data organized by category
+    const videosByCategory = {
+      'Music & The Arts': [
+        { id: 'G04GGB1wh_s', title: 'Bollywood Music Compilation' },
+        { id: 'WpYeekQkAdc', title: 'Black Eyed Peas - Where Is The Love' },
+        { id: '9EcjWd-O4jI', title: 'Technotronic - Pump Up The Jam' },
+        { id: 's2oWPO2VIiE', title: 'Top Hits 2025' },
+        { id: '3gWYjooZFs0', title: 'Chill House Mix' },
+        { id: 'PekVe2nZ2xU', title: 'Dance Hits 90s' },
+        { id: 'qizKODkJVdY', title: '70s Disco Funk' },
+        { id: 'ZSN2j__PLVA', title: 'Best Disco 70 80 90' },
+        { id: 'LNrAFb3I2js', title: 'Prince Live Performance' },
+        { id: 'DQGPuSWoR1w', title: 'Songs That Make You Dance' },
+        { id: 'cLfPAnVlGEE', title: 'Red Velvet Music Video' },
+        { id: '27K0qxm-4Z8', title: 'KPOP Playlist' }
+      ],
+      'World Peace': [
+        { id: 'McdVlO0K1Qc', title: 'World Peace Playlist' },
+        { id: 'ut3WhMeEPt8', title: 'World Peace TEDx Talk' },
+        { id: 'KuKzq9EDt-0', title: 'Global Citizenship Education' }
+      ],
+      'Food Security': [
+        { id: '_ddcjQf7OY0', title: 'State of Food Security 2023' },
+        { id: 'wu7PjKawjwI', title: 'Food Security Documentary' },
+        { id: 'tnqPcpSgxwU', title: '4 Ways to Sustainable Food' },
+        { id: '4aa6wvJyt1c', title: 'Re-Thinking Food TEDx' }
+      ],
+      'Human Dignity': [
+        { id: 'D9Ihs241zeg', title: 'Chimamanda Ngozi Adichie TED Talk' },
+        { id: 'OF1MOQuJGSE', title: 'Human Dignity Organizational' },
+        { id: 'RwSYrsjTiW4', title: 'Cultures of the World' },
+        { id: 'qCo3wSGYRbQ', title: 'Gestures Around the World' },
+        { id: 'ekHpCUwXX_M', title: 'Greetings Around the World' },
+        { id: 'frPUBM6Ck8w', title: 'Amazing Cultures Revealed' }
+      ],
+      'Health & Wellness': [
+        { id: 'I3OJUwILelU', title: 'Relaxing Music for Stress Relief' },
+        { id: '_gJ5V525SCk', title: 'Five Ways to Wellbeing' },
+        { id: '4-NS4l7YMpA', title: 'The Four Agreements Audiobook' },
+        { id: 'gkQOqv9E8pc', title: 'Wall Pilates Day 2' },
+        { id: 'BR-dZgo7z_w', title: 'Wall Pilates Day 3' },
+        { id: 'zqe-bAgpkWc', title: 'Wall Pilates Day 10' },
+        { id: 'KklEpBsrwWU', title: 'Wall Pilates Stretch Day 11' },
+        { id: 'i43FBXrOnng', title: 'Wall Pilates Day 12' },
+        { id: 'zWDVxA4Kkd0', title: 'Wall Pilates Day 16' }
+      ],
+      'Animal Kindness': [
+        { id: 'D4lDPRGDvYo', title: '35 Hero Animals' },
+        { id: 'L-9WYPVxjDw', title: 'Always Be Kind To Animals' }
+      ],
+      'Free Education': [
+        { id: 'OvYCLxqkfvY', title: 'Who Moved My Cheese' },
+        { id: 'NhWWvxyQlgc', title: 'Lean Startup Audiobook' },
+        { id: 'sobxOzRjAGg', title: 'Lean Startup Summary' },
+        { id: 'RSaIOCHbuYw', title: 'Lean Startup Summary 2' },
+        { id: 'UMOZZ5uZgxA', title: 'Power of Habit Animated' },
+        { id: 'OMbsGBlpP30', title: 'Power of Habit TED' },
+        { id: 'PHuTW5mD02c', title: 'Pyramid Principle McKinsey' },
+        { id: 'eVfmR8IwMlo', title: 'Pyramid Principle How To' },
+        { id: '1y15zjp47KQ', title: 'Pyramid Principle Examples' },
+        { id: 'j4Y3TdVVBCA', title: 'Minto Method Explained' },
+        { id: 'NWGDXOtPm_Q', title: 'Escaping Build Trap 7 min' },
+        { id: 'iabdR7rFJAE', title: 'Escaping Build Trap' },
+        { id: 'g2ps3Xa9CYo', title: 'Working Backwards' },
+        { id: 'uj3AUwOuULU', title: 'Toyota Way' },
+        { id: 'C3nYWKKmVSM', title: 'Outcomes over Output' },
+        { id: 'rK_Fo0oyhxI', title: 'What is Design Thinking' },
+        { id: 'gnWj97CEjeo', title: 'What Is Design Thinking 2' },
+        { id: 'OqBuXJQprBw', title: 'Design Thinking for Artists' }
+      ],
+      'Innovation': [
+        { id: 'bgPuPSPZe2U', title: 'Learn AWS' },
+        { id: 'Xrgk023l4lI', title: 'DevOps in 5 Minutes' },
+        { id: 'TlHvYWVUZyc', title: 'Kubernetes in 6 Minutes' },
+        { id: 'h0nxCDiD-zg', title: 'SQL for Beginners' },
+        { id: 'kqtD5dpn9C8', title: 'Python in 1 Hour' },
+        { id: 'UB1O30fR-EE', title: 'HTML Crash Course' },
+        { id: 'yfoY53QXEnI', title: 'CSS Crash Course' },
+        { id: 'W6NZfCO5SIk', title: 'JavaScript in 1 Hour' },
+        { id: 'QNdiGZFaUFs', title: 'Intro to Databricks' }
+      ],
+      'Payment Equity': [
+        { id: 'ck-LbFagYD4', title: 'Democratization of Finance Yale' },
+        { id: '4q_jVu5T80g', title: 'Dan Schulman PayPal Goldman Sachs' },
+        { id: 'V4emrerqbS0', title: 'Democratizing the Economy' }
+      ],
+      'Environment': [
+        { id: 'x3Q9zT6t4eU', title: 'First Blush in the Snow' },
+        { id: '67yORnjaDjY', title: 'San Jacinto Nature Documentary' },
+        { id: 'JRDtW_XCqb4', title: 'Backpacking Yosemite' },
+        { id: 'UwJotLZ_NgY', title: 'San Gorgonio Nature Documentary' },
+        { id: 'LQZ9BPSS1_I', title: 'Ultra-Processed Food Documentary' }
+      ],
+      'Spiritual Growth': [
+        { id: 'zXW_t42ILiA', title: 'Prayer is Answered' },
+        { id: 'X9WaO6V1id4', title: 'William Ackerman Collection' }
+      ]
+    };
+
+    // Initialize video grid and filters
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoGrid = document.getElementById('videoGrid');
+      const filterControls = document.getElementById('filterControls');
+      let activeFilter = 'all';
+
+      // Create filter buttons
+      Object.keys(videosByCategory).forEach(category => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.textContent = category;
+        btn.dataset.filter = category;
+        btn.addEventListener('click', () => filterVideos(category));
+        filterControls.appendChild(btn);
+      });
+
+      function renderVideos(category = 'all') {
+        videoGrid.innerHTML = '';
+        let videoCount = 0;
+
+        Object.entries(videosByCategory).forEach(([cat, videos]) => {
+          if (category === 'all' || category === cat) {
+            videos.forEach(video => {
+              const card = document.createElement('div');
+              card.className = 'video-card fade-in-up';
+              card.dataset.category = cat;
+              card.innerHTML = `
+                <div class="video-thumbnail">
+                  <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/${video.id}?rel=0" 
+                    title="${video.title}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen="">
+                  </iframe>
+                </div>
+                <div class="video-info">
+                  <span class="video-category">${cat}</span>
+                  <div class="video-title">${video.title}</div>
+                </div>
+              `;
+              videoGrid.appendChild(card);
+              videoCount++;
+            });
+          }
+        });
+
+        if (videoCount === 0) {
+          videoGrid.innerHTML = '<div class="no-results">No videos found in this category.</div>';
+        }
+      }
+
+      function filterVideos(category) {
+        activeFilter = category;
+        
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+
+        renderVideos(category);
+      }
+
+      // Initial render
+      renderVideos();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterPlanet Co-op | Anti-Doomscrolling Entertainment & Wellbeing</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Hero Gradient Animation */
+    .hero {
+      background: linear-gradient(-45deg, #2d6a4f, #00b4a0, #f4a261, #2d6a4f);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 80%, rgba(244, 162, 97, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: var(--spacing-lg);
+      animation: fadeInUp var(--transition-slow) ease-out;
+    }
+    
+    .hero h1 {
+      color: white;
+      margin-bottom: var(--spacing-md);
+      font-weight: 700;
+    }
+    
+    .typewriter-text {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: var(--spacing-xl);
+      min-height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-subheading {
+      font-size: 1.1rem;
+      margin-bottom: var(--spacing-xl);
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+    
+    .hero .btn-group {
+      justify-content: center;
+    }
+    
+    /* How It Works */
+    .how-it-works {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-xl);
+      text-align: center;
+      margin: var(--spacing-2xl) 0;
+    }
+    
+    .step {
+      padding: var(--spacing-lg);
+    }
+    
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background-color: var(--color-golden);
+      color: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-md);
+      font-family: var(--font-heading);
+    }
+    
+    .step-arrow {
+      display: none;
+      color: var(--color-teal);
+      font-size: 2rem;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    @media (min-width: 769px) {
+      .how-it-works {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      
+      .step {
+        position: relative;
+      }
+      
+      .step:not(:last-child)::after {
+        content: '→';
+        position: absolute;
+        right: -40px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        color: var(--color-teal);
+        font-weight: 300;
+      }
+    }
+    
+    /* Tools Preview */
+    .tools-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+      margin: var(--spacing-2xl) 0;
+    }
+    
+    .tool-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+    }
+    
+    .tool-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .tool-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .tool-card h3 {
+      color: var(--color-forest-green);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .tool-card p {
+      color: var(--color-text-light);
+      margin-bottom: var(--spacing-md);
+      font-size: 0.95rem;
+    }
+    
+    /* Pillars Grid */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--spacing-lg);
+      margin: var(--spacing-2xl) 0;
+    }
+    
+    @media (max-width: 768px) {
+      .pillars-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .pillar-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-lg);
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+      cursor: pointer;
+      text-align: center;
+    }
+    
+    .pillar-item:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: var(--shadow-md);
+      background-color: var(--bg-secondary);
+    }
+    
+    .pillar-icon {
+      font-size: 2rem;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .pillar-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-forest-green);
+      line-height: 1.3;
+    }
+    
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--spacing-2xl);
+    }
+    
+    .section-header h2 {
+      color: var(--color-forest-green);
+    }
+    
+    .section-header p {
+      font-size: 1.1rem;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">🌍 BetterPlanet Co-op</a>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tv.html">Watch</a></li>
+          <li><a href="tools.html">Tools</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank" class="btn btn-primary">Shop</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>We're Changing the Narrative</h1>
+      <div class="typewriter-text" id="typewriter"></div>
+      <p class="hero-subheading">BetterPlanet Co-op gives 100% of profits to charity while delivering mission-driven entertainment, tools for wellbeing, and free education.</p>
+      <div class="btn-group">
+        <a href="tv.html" class="btn btn-secondary">Watch & Scroll</a>
+        <a href="get-involved.html" class="btn btn-accent">Join the Mission</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+      </div>
+      <div class="how-it-works">
+        <div class="step fade-in-up">
+          <div class="step-number">1</div>
+          <h3>Shop or Watch</h3>
+          <p>Explore our mission-driven entertainment, tools, and products</p>
+        </div>
+        <div class="step fade-in-up">
+          <div class="step-number">2</div>
+          <h3>Profits → Charity</h3>
+          <p>100% of profits go directly to charitable causes</p>
+        </div>
+        <div class="step fade-in-up">
+          <div class="step-number">3</div>
+          <h3>Planet Gets Better</h3>
+          <p>Your support funds real-world impact and positive change</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Tools -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Wellbeing Tools You'll Love</h2>
+        <p>Free digital tools designed to help you slow down, reflect, and feel better</p>
+      </div>
+      <div class="tools-preview">
+        <div class="tool-card fade-in-up">
+          <div class="tool-icon">📔</div>
+          <h3>Digital Gratitude Journal</h3>
+          <p>Write and save daily gratitude entries. Reflect on what matters most.</p>
+          <a href="tools.html#gratitude" class="btn btn-primary">Try It</a>
+        </div>
+        <div class="tool-card fade-in-up">
+          <div class="tool-icon">💌</div>
+          <h3>Thank You Notes</h3>
+          <p>Write heartfelt thank you notes with warm templates to get you started.</p>
+          <a href="tools.html#thankyou" class="btn btn-primary">Try It</a>
+        </div>
+        <div class="tool-card fade-in-up">
+          <div class="tool-icon">⏰</div>
+          <h3>MeTime Scheduler</h3>
+          <p>Block personal time for yourself. Protect your wellbeing every week.</p>
+          <a href="tools.html#metime" class="btn btn-primary">Try It</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 Pillars -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our 11 Pillars</h2>
+        <p>Every piece of content and tool aligns with these core values</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">🌿</div>
+          <div class="pillar-label">Health & Wellness</div>
+        </div>
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">🕊️</div>
+          <div class="pillar-label">World Peace</div>
+        </div>
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">🌾</div>
+          <div class="pillar-label">Food Security</div>
+        </div>
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">🤝</div>
+          <div class="pillar-label">Human Dignity</div>
+        </div>
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">💡</div>
+          <div class="pillar-label">Innovation</div>
+        </div>
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">📚</div>
+          <div class="pillar-label">Free Education</div>
+        </div>
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">🙏</div>
+          <div class="pillar-label">Spiritual Growth</div>
+        </div>
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">🌍</div>
+          <div class="pillar-label">The Environment</div>
+        </div>
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">💳</div>
+          <div class="pillar-label">Payment Equity</div>
+        </div>
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">🎵</div>
+          <div class="pillar-label">Music & The Arts</div>
+        </div>
+        <div class="pillar-item fade-in-up">
+          <div class="pillar-icon">🐾</div>
+          <div class="pillar-label">Animal Kindness</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>BetterPlanet Co-op</h3>
+          <p>Creating mission-driven entertainment, tools, and education for a better world.</p>
+          <p><strong>Email:</strong> <a href="mailto:nicole@betterplanet.org">nicole@betterplanet.org</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tv.html">Watch & Scroll</a></li>
+            <li><a href="tools.html">Wellbeing Tools</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Get Involved</h3>
+          <ul>
+            <li><a href="get-involved.html">Partnership Tiers</a></li>
+            <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank">Shop</a></li>
+            <li><a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank">Introduce Yourself</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><strong>BetterPlanet Inc©</strong> is a registered 501(c)(3) charity. <strong>EIN: 93-2053353</strong></p>
+        <p>All profits from sales are donated to charity. Donations are tax-deductible.</p>
+        <p>&copy; 2026 BetterPlanet Co-op. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Initialize typewriter effect on home page
+    document.addEventListener('DOMContentLoaded', function() {
+      const typewriterElement = document.getElementById('typewriter');
+      if (typewriterElement) {
+        const phrases = [
+          'One video at a time.',
+          'One purchase at a time.',
+          'One act of kindness at a time.'
+        ];
+        typewriter(typewriterElement, phrases, 80, 2000);
+      }
+    });
+  </script>
+</body>
+</html>

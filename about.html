@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About BetterPlanet | Our Story & Mission</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .about-hero {
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.1), rgba(0, 180, 160, 0.1));
+      padding: var(--spacing-2xl) 0;
+      text-align: center;
+      margin-bottom: var(--spacing-2xl);
+    }
+    
+    .about-hero h1 {
+      color: var(--color-forest-green);
+    }
+    
+    .about-section {
+      margin-bottom: var(--spacing-2xl);
+    }
+    
+    .about-section h2 {
+      color: var(--color-forest-green);
+      margin-bottom: var(--spacing-lg);
+      position: relative;
+      padding-bottom: var(--spacing-md);
+    }
+    
+    .about-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--color-golden);
+      border-radius: 2px;
+    }
+    
+    .about-content {
+      background: white;
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      line-height: 1.8;
+    }
+    
+    .about-content p {
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-text-dark);
+      font-size: 1.05rem;
+    }
+    
+    .about-content strong {
+      color: var(--color-forest-green);
+    }
+    
+    .founder-bio {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+      align-items: center;
+    }
+    
+    @media (max-width: 768px) {
+      .founder-bio {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .founder-image {
+      background: linear-gradient(135deg, var(--color-teal), var(--color-golden));
+      border-radius: var(--radius-lg);
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .founder-info h3 {
+      color: var(--color-forest-green);
+      font-size: 1.5rem;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .founder-title {
+      color: var(--color-teal);
+      font-weight: 600;
+      margin-bottom: var(--spacing-lg);
+      display: block;
+    }
+    
+    .key-milestones {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-lg);
+      margin: var(--spacing-xl) 0;
+    }
+    
+    .milestone {
+      background: white;
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--color-golden);
+    }
+    
+    .milestone-year {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-forest-green);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .milestone-text {
+      color: var(--color-text-light);
+      font-size: 0.95rem;
+    }
+    
+    .values-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+    }
+    
+    .values-list li {
+      padding: var(--spacing-lg);
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      padding-left: 50px;
+    }
+    
+    .values-list li::before {
+      content: '✓';
+      position: absolute;
+      left: var(--spacing-lg);
+      top: var(--spacing-lg);
+      font-size: 1.5rem;
+      color: var(--color-teal);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">🌍 BetterPlanet Co-op</a>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tv.html">Watch</a></li>
+          <li><a href="tools.html">Tools</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="get-involved.html">Get Involved</a></li>
+          <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank" class="btn btn-primary">Shop</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <div class="container">
+        <h1>Our Story</h1>
+        <p style="font-size: 1.2rem; color: var(--color-text-light); margin-top: var(--spacing-md);">How BetterPlanet is changing the narrative</p>
+      </div>
+    </section>
+
+    <!-- About Organization -->
+    <section class="section">
+      <div class="container">
+        <div class="about-section fade-in-up">
+          <h2>About BetterPlanet Co-op</h2>
+          <div class="about-content">
+            <p>
+              <strong>BetterPlanet Inc. was founded in 2000</strong> by Nicole and friends with a simple mission: 
+              create digital products that make the world better. We started experimenting with how the exponential 
+              reciprocity power of the internet could solve world problems.
+            </p>
+            <p>
+              Over time, we learned that the technology piece was only half the story. The other half was Advertising, 
+              Marketing, and Brand — the Agency side. We realized something powerful: <strong>What if we mixed these powers 
+              to actually make the planet better instead of tricking people to buy stuff?</strong>
+            </p>
+            <p>
+              <strong>What if we use the same sentiments that grab attention and direct the engagement to outcomes that make 
+              the planet better?</strong> That became our north star.
+            </p>
+            <p>
+              In <strong>2023, BetterPlanet Co-op was founded as a registered 501(c)(3) nonprofit</strong> — a moment to take 
+              actionable next steps to create the planet we want, as a collaborative creative force. Every video we curate, 
+              every tool we build, and every partnership we forge is aligned with our 11 core pillars, designed to make real 
+              positive impact.
+            </p>
+          </div>
+        </div>
+
+        <!-- Key Milestones -->
+        <div class="about-section fade-in-up">
+          <h2>Our Journey</h2>
+          <div class="key-milestones">
+            <div class="milestone">
+              <div class="milestone-year">2000</div>
+              <div class="milestone-text">Founded with a mission to create digital products for good</div>
+            </div>
+            <div class="milestone">
+              <div class="milestone-year">2010s</div>
+              <div class="milestone-text">Experimented with internet's power to solve global challenges</div>
+            </div>
+            <div class="milestone">
+              <div class="milestone-year">2023</div>
+              <div class="milestone-text">Launched as registered 501(c)(3) nonprofit charity</div>
+            </div>
+            <div class="milestone">
+              <div class="milestone-year">2026</div>
+              <div class="milestone-text">Building tools and content for 11 core pillars of change</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Values -->
+        <div class="about-section fade-in-up">
+          <h2>Our Core Values</h2>
+          <ul class="values-list">
+            <li><strong>Mission-Driven:</strong> Everything we do serves a purpose beyond profit</li>
+            <li><strong>100% Transparency:</strong> All profits donated to charity. No exceptions.</li>
+            <li><strong>Quality & Impact:</strong> World-class digital innovation meets real-world change</li>
+            <li><strong>Collaborative:</strong> We partner with organizations aligned to our mission</li>
+            <li><strong>Hope Over Doomscrolling:</strong> We celebrate solutions, not just problems</li>
+            <li><strong>Accessibility:</strong> Tools and content free or affordable to all</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="about-section fade-in-up">
+          <h2>About the Founder</h2>
+          <div class="founder-bio">
+            <div class="founder-image">👩‍💼</div>
+            <div class="founder-info">
+              <h3>Nicole Chernow-Martinez</h3>
+              <span class="founder-title">Founder & President</span>
+              <p>
+                Product Management and Engineering leader with <strong>20+ years of experience</strong> building 
+                world-class digital products at scale. Nicole brings deep expertise in driving innovation, 
+                managing cross-functional teams, and using data-driven strategies to create impact.
+              </p>
+              <p>
+                As <strong>President of BetterPlanet Inc. and Director of Product Management & Creative Growth</strong>, 
+                Nicole is passionate about putting world-class digital innovation into the world. She employs an 
+                <strong>Agile marketing model where marketing becomes a growth lever</strong>, constantly testing, learning, 
+                and optimizing to achieve real-world mission impact.
+              </p>
+              <p>
+                Nicole believes that technology, creativity, and strategic thinking can combine to solve the world's 
+                greatest challenges. Her portfolio showcases 20+ years of shipping products that matter.
+              </p>
+              <a href="https://nicolechernowmartinez.github.io/Portfolio" target="_blank" class="btn btn-primary">View Portfolio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section">
+      <div class="container">
+        <div style="text-align: center; padding: var(--spacing-xl); background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+          <h2 style="color: var(--color-forest-green);">Join Our Mission</h2>
+          <p style="font-size: 1.1rem; color: var(--color-text-light); margin-bottom: var(--spacing-lg);">
+            Help us change the narrative. Explore our partnership opportunities and find how you can be part of the impact.
+          </p>
+          <a href="get-involved.html" class="btn btn-primary" style="font-size: 1.05rem; padding: var(--spacing-md) var(--spacing-xl);">Get Involved</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>BetterPlanet Co-op</h3>
+          <p>Creating mission-driven entertainment, tools, and education for a better world.</p>
+          <p><strong>Email:</strong> <a href="mailto:nicole@betterplanet.org">nicole@betterplanet.org</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tv.html">Watch & Scroll</a></li>
+            <li><a href="tools.html">Wellbeing Tools</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Get Involved</h3>
+          <ul>
+            <li><a href="get-involved.html">Partnership Tiers</a></li>
+            <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank">Shop</a></li>
+            <li><a href="https://www.agenticsgrowthlab.com/introduce-yourself" target="_blank">Introduce Yourself</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><strong>BetterPlanet Inc©</strong> is a registered 501(c)(3) charity. <strong>EIN: 93-2053353</strong></p>
+        <p>All profits from sales are donated to charity. Donations are tax-deductible.</p>
+        <p>&copy; 2026 BetterPlanet Co-op. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
