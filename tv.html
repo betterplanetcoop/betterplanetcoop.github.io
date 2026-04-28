@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BetterPlanet TV | Mission-Driven Entertainment</title>
-  <link rel='icon' type='image/png' href='favicon.png'>
+  <link rel='shortcut icon' href='favicon2.ico' type='image/x-icon'>
   <link rel="stylesheet" href="styles.css">
   <style>
     .featured-section {
@@ -15,43 +15,46 @@
     }
     
     .featured-heading {
-      color: var(--color-forest-green);
+      color: white;
       font-size: 1.3rem;
       margin-bottom: var(--spacing-lg);
       font-weight: 600;
     }
-    
+
     .featured-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
     }
     
     .featured-card {
-      background: white;
+      background: rgba(255, 255, 255, 0.05);
       border-radius: var(--radius-lg);
       padding: var(--spacing-lg);
       text-align: center;
-      box-shadow: var(--shadow-sm);
+      box-shadow: none;
       transition: all var(--transition-base);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .featured-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
     }
     
     .featured-card h3 {
-      color: var(--color-forest-green);
+      color: white;
       margin-bottom: var(--spacing-md);
       font-size: 1.1rem;
     }
     
     .featured-card p {
-      color: var(--color-text-light);
-      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
       margin-bottom: var(--spacing-md);
+      line-height: 1.6;
     }
 
     .logo {
@@ -101,59 +104,58 @@
     .sky-background .cloud::after {
       content: '';
       position: absolute;
-      background: rgba(255, 255, 255, 0.5);
+      background: radial-gradient(ellipse, rgba(255, 255, 255, 0.8), transparent);
       border-radius: 50%;
       filter: blur(20px);
     }
 
     .sky-background .cloud::before {
-      width: 300px;
-      height: 180px;
-      top: -60px;
-      left: 10px;
+      width: 180px;
+      height: 100px;
+      top: -40px;
+      left: -30px;
     }
 
     .sky-background .cloud::after {
-      width: 280px;
-      height: 160px;
-      top: 30px;
-      left: 180px;
+      width: 200px;
+      height: 110px;
+      top: 20px;
+      left: 120px;
     }
 
     .cloud-1 {
-      top: 10%;
-      left: 100%;
-      width: 800px;
-      height: 250px;
-      animation: cloudDrift 18s linear infinite;
-      opacity: 0.6;
+      top: 15%;
+      left: 130%;
+      width: 280px;
+      height: 100px;
+      animation: cloudDrift 45s linear infinite;
     }
 
     .cloud-2 {
-      top: 40px;
-      left: 120%;
-      width: 700px;
-      height: 220px;
-      animation: cloudDrift 22s linear infinite;
-      opacity: 0.5;
+      top: 60px;
+      left: 155%;
+      width: 240px;
+      height: 90px;
+      animation: cloudDrift 55s linear infinite;
+      opacity: 0.85;
     }
 
     .cloud-3 {
-      top: 100px;
-      left: 110%;
-      width: 900px;
-      height: 280px;
-      animation: cloudDrift 20s linear infinite;
-      opacity: 0.65;
+      top: 130px;
+      left: 145%;
+      width: 320px;
+      height: 120px;
+      animation: cloudDrift 50s linear infinite;
+      opacity: 0.8;
     }
 
     .cloud-4 {
-      top: 160px;
-      left: 130%;
-      width: 750px;
-      height: 240px;
-      animation: cloudDrift 24s linear infinite;
-      opacity: 0.55;
+      top: 180px;
+      left: 160%;
+      width: 260px;
+      height: 95px;
+      animation: cloudDrift 60s linear infinite;
+      opacity: 0.75;
     }
 
     @keyframes cloudDrift {
@@ -161,29 +163,29 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(-100vw);
+        transform: translateX(-150vw);
       }
     }
 
     .video-section-dark {
-      background: linear-gradient(to bottom, rgba(135, 206, 235, 0.3) 0%, rgba(135, 206, 235, 0.1) 20%, #0a0a0f 100%);
-      padding-top: calc(var(--spacing-2xl) + 90px);
+      background: #0a0a0f;
+      padding-top: 0;
       padding-bottom: var(--spacing-2xl);
       position: relative;
       overflow: hidden;
       z-index: 1;
     }
 
-    .video-section-dark h1 {
-      color: white;
-    }
-
-    .video-section-dark h1 + p {
-      color: white;
-    }
-
-    .btn-primary {
-      color: white !important;
+    .video-section-dark::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to bottom, rgba(135, 206, 235, 0.3), rgba(10, 10, 15, 0.8));
+      pointer-events: none;
+      z-index: 2;
     }
 
     .starfield-canvas {
@@ -197,19 +199,7 @@
 
     .video-section-dark .container {
       position: relative;
-      z-index: 2;
-    }
-
-    .video-section-dark::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 140px;
-      background: linear-gradient(to bottom, rgba(10, 10, 15, 0.5), transparent);
-      pointer-events: none;
-      z-index: 2;
+      z-index: 3;
     }
 
     /* Filter Controls */
@@ -219,11 +209,12 @@
       gap: var(--spacing-md);
       margin-bottom: var(--spacing-2xl);
       justify-content: center;
+      margin-top: var(--spacing-lg);
     }
     
     .filter-btn {
       padding: var(--spacing-sm) var(--spacing-lg);
-      border: 1px solid rgba(255, 255, 255, 0.75);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border-radius: var(--radius-md);
       background: transparent;
       color: white;
@@ -234,15 +225,14 @@
     }
     
     .filter-btn:hover {
-      border-color: rgba(255, 255, 255, 1);
-      color: white;
+      border-color: rgba(255, 255, 255, 0.6);
       background: rgba(255, 255, 255, 0.08);
     }
     
     .filter-btn.active {
-      background: var(--color-golden);
+      background: #ff9800;
       color: white;
-      border-color: var(--color-golden);
+      border-color: #ff9800;
     }
     
     /* Video Grid */
@@ -273,6 +263,7 @@
       box-shadow: 0 16px 35px rgba(0, 0, 0, 0.4);
       transition: all var(--transition-base);
       border: 1px solid rgba(255, 255, 255, 0.08);
+      cursor: pointer;
     }
     
     .video-card:hover {
@@ -287,7 +278,42 @@
       background: #000;
       overflow: hidden;
     }
-    
+
+    .video-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .video-play-button::after {
+      content: '▶';
+      color: #000;
+      font-size: 24px;
+      margin-left: 4px;
+    }
+
+    .video-card:hover .video-play-button {
+      background: rgba(255, 255, 255, 1);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
     .video-thumbnail iframe {
       position: absolute;
       top: 0;
@@ -304,7 +330,7 @@
     
     .video-category {
       display: inline-block;
-      background: var(--color-golden);
+      background: #ff9800;
       color: white;
       padding: 4px 12px;
       border-radius: 20px;
@@ -332,8 +358,26 @@
     .no-results {
       text-align: center;
       padding: var(--spacing-2xl);
-      color: var(--color-text-light);
+      color: rgba(255, 255, 255, 0.6);
       grid-column: 1 / -1;
+    }
+
+    .skip-to-videos {
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: var(--spacing-md);
+      padding: var(--spacing-sm) var(--spacing-lg);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all var(--transition-base);
+    }
+
+    .skip-to-videos:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
     }
   </style>
 </head>
@@ -360,7 +404,7 @@
           <li><a href="tools.html">Tools</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="get-involved.html">Get Involved</a></li>
-          <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank" class="btn btn-primary">Shop</a></li>
+          <li><a href="https://www.agenticsgrowthlab.com/shopping" target="_blank" class="btn btn-primary" style="color: white;">Shop</a></li>
         </ul>
       </nav>
     </div>
@@ -371,40 +415,40 @@
     <section class="section video-section-dark">
       <canvas id="starfieldCanvas" class="starfield-canvas" aria-hidden="true"></canvas>
       <div class="container">
-        <!-- Page Header -->
-        <div class="section-header">
-          <h1>BetterPlanet TV</h1>
-          <p>Simple Ways to Change the Narrative</p>
-          <p style="font-size: 1rem; margin-top: var(--spacing-md); color: white;">Scroll through mission-aligned entertainment instead of doomscrolling. Every video supports one of our 11 pillars.</p>
-        </div>
         
-        <!-- Featured Partners -->
+        <!-- Offerings Section -->
         <div class="featured-section fade-in-up">
-          <div class="featured-heading">Featured Campaigns</div>
+          <div class="featured-heading">🌏 BetterPlanet Offerings</div>
           <div class="featured-cards">
             <div class="featured-card">
-              <h3>🌏30 Days for the Planet</h3>
+              <h3>🌏 30 Days for the Planet</h3>
               <p>Make small changes to support big environmental sustainability</p>
               <a href="https://www.agenticsgrowthlab.com/30-days-for-the-planet" target="_blank" class="btn btn-secondary">Join Challenge</a>
             </div>
             <div class="featured-card">
-              <h3>Like the fanciest hotels, meet your favorite new Chief of Staff</h3>
-              <p>Try Gaia - Agentic Environmental Sustainability Coach</p>
+              <h3>Try Gaia</h3>
+              <p>Like the fanciest hotels, meet your favorite new Chief of Staff. Agentic Environmental Sustainability Coach</p>
               <a href="https://www.agenticsgrowthlab.com/30-days-for-the-planet" target="_blank" class="btn btn-secondary">Try Gaia</a>
             </div>
             <div class="featured-card">
-              <h3>🌏Feel the Relief</h3>
-              <p>Safe, moral, legal first by limiting sources to: internationally accepted legal information, medically peer reviewed information - no social media influence</p>
+              <h3>🌏 Try Sol</h3>
+              <p>Feel the Relief. Safe, moral, legal first AI wellness coach</p>
               <a href="https://www.agenticsgrowthlab.com/karmabuzz" target="_blank" class="btn btn-secondary">Try Sol</a>
+            </div>
+            <div class="featured-card">
+              <h3>🌏 Share the Vibe</h3>
+              <p>Mission Aligned Entertainment</p>
+              <a href="#filterControls" class="skip-to-videos">Skip to Videos</a>
             </div>
           </div>
         </div>
-        
-        <div style="text-align: center; margin-bottom: var(--spacing-lg);">
-          <p style="color: white; margin-bottom: var(--spacing-md);">Filter by category:</p>
+
+        <!-- Filter Controls -->
+        <div style="text-align: center; margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-lg);">
+          <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: var(--spacing-md);">Filter by category:</p>
         </div>
         <div class="filter-controls" id="filterControls">
-          <button class="filter-btn active" data-filter="all">All Videos</button>
+          <!-- Filter buttons will be added here by JavaScript -->
         </div>
         
         <!-- Video Grid -->
@@ -452,7 +496,7 @@
 
   <script src="script.js"></script>
   <script>
-    // Video data organized by category
+    // Video data organized by category - COMPREHENSIVE LIBRARY
     const videosByCategory = {
       'Music & The Arts': [
         { id: 'G04GGB1wh_s', title: 'Bollywood Music Compilation' },
@@ -466,26 +510,51 @@
         { id: 'LNrAFb3I2js', title: 'Prince Live Performance' },
         { id: 'DQGPuSWoR1w', title: 'Songs That Make You Dance' },
         { id: 'cLfPAnVlGEE', title: 'Red Velvet Music Video' },
-        { id: '27K0qxm-4Z8', title: 'KPOP Playlist' }
-      ],
-      'World Peace': [
-        { id: 'McdVlO0K1Qc', title: 'World Peace Playlist' },
-        { id: 'ut3WhMeEPt8', title: 'World Peace TEDx Talk' },
-        { id: 'KuKzq9EDt-0', title: 'Global Citizenship Education' }
-      ],
-      'Food Security': [
-        { id: '_ddcjQf7OY0', title: 'State of Food Security 2023' },
-        { id: 'wu7PjKawjwI', title: 'Food Security Documentary' },
-        { id: 'tnqPcpSgxwU', title: '4 Ways to Sustainable Food' },
-        { id: '4aa6wvJyt1c', title: 'Re-Thinking Food TEDx' }
-      ],
-      'Human Dignity': [
-        { id: 'D9Ihs241zeg', title: 'Chimamanda Ngozi Adichie TED Talk' },
-        { id: 'OF1MOQuJGSE', title: 'Human Dignity Organizational' },
-        { id: 'RwSYrsjTiW4', title: 'Cultures of the World' },
-        { id: 'qCo3wSGYRbQ', title: 'Gestures Around the World' },
-        { id: 'ekHpCUwXX_M', title: 'Greetings Around the World' },
-        { id: 'frPUBM6Ck8w', title: 'Amazing Cultures Revealed' }
+        { id: '27K0qxm-4Z8', title: 'KPOP Playlist' },
+        { id: 'k2rbzAQJM7Y', title: 'Coke Studio Algeria Ligh Ezzaman' },
+        { id: '7JxepnRpk-s', title: 'Nonstop House Party Mix 2025' },
+        { id: 'M7xQEdKHtv0', title: 'DJ Snake Disco Maghreb' },
+        { id: 'cEuT4tFuqeo', title: 'Best French Deep House Mix' },
+        { id: 'bWZocyszivk', title: 'Afro House Mix 2025' },
+        { id: 'Elt0ZQo5bHY', title: 'Music Mix 2025 Party Club' },
+        { id: 'DJ-5RcS37kE', title: 'Dutch Kingsday Party' },
+        { id: 'dzSW21mn2ZM', title: 'Thai Budots 2024' },
+        { id: '4gDwVseTc94', title: 'Thai Party Dance 2023' },
+        { id: '8EpMZbO1K4Y', title: 'Nubian Nights Egyptian Belly Dance' },
+        { id: 'ZXEwEZiq15s', title: 'Satalana Egyptian' },
+        { id: 'Y35w12E9pyY', title: 'Ukrainian Music 2023 Mix 1' },
+        { id: 'acEzzgJpfl8', title: 'Ukrainian Music Mix 2' },
+        { id: 'cMs1wygcuS4', title: 'Techno German Hands Up 2017' },
+        { id: '49UM567Yn8E', title: 'Music Mix 2024 German Dance' },
+        { id: 'CfyAVLanFAU', title: 'Russian Club Mix 2024' },
+        { id: 'JP-_hZ7aBNc', title: 'Russian Music Mix 2024-2025' },
+        { id: '_6kNI8FZYjY', title: 'Disco Remix Chinese' },
+        { id: 'wzZkWlVnH4c', title: 'Chinese Song Remix 2025' },
+        { id: '6L4TxoLyMkc', title: 'Dancing Around Palestine' },
+        { id: 'B2GoZ36FjUs', title: 'Best Arab Trap Dabke' },
+        { id: 'ZFksuAr_f-w', title: 'DJ Asaf Gez Israeli' },
+        { id: 'GnlkR4PPVoI', title: 'Israeli Winter Hits 2024' },
+        { id: 'JVkzeU8gPmU', title: 'Moroccan Music Mix 2023' },
+        { id: 'KDljTZjoPN4', title: 'Nandra Morocco Deserts' },
+        { id: 'y0ua77o3rJI', title: 'Arabic Playlist Amapiano' },
+        { id: '832oX7jlWpo', title: 'Japan X Kpop Mixtape' },
+        { id: 'p_bhlnp2r9s', title: 'Japanese EDM Gaming' },
+        { id: 'suUsDNq4WtM', title: '3 Hours Japanese Traditional' },
+        { id: 'MzgMBrtrFc4', title: 'Japanese Bamboo Flute' },
+        { id: '2s0WW7IfaC0', title: 'Top 8 Adele Songs' },
+        { id: 'HdvrbqXpVpM', title: 'Top Hits 2025 English Cover' },
+        { id: '3UhKt33SxiI', title: 'Spanish Songs 2025 Summer' },
+        { id: 'PbB_dF7Hetc', title: 'Fiesta Latina Mix 2024' },
+        { id: 'ThwCMpnX90Q', title: 'Hawaiian Reggae Vibes' },
+        { id: 'ZUsyRkEq6z4', title: 'Top Reggae Dub 2024' },
+        { id: 'jLz2FZgCd8I', title: 'Best of Bob Marley' },
+        { id: 'be67OhUSULg', title: 'Lutan Fyah Rasta Reggae' },
+        { id: 'USdS2f5o2Ek', title: 'Non-stop Bollywood Party 2024' },
+        { id: 'jKoQwcSHg_s', title: 'Best Bollywood Instrumental' },
+        { id: 'SuqAsE2NgIQ', title: 'Top 20 Bollywood Dance' },
+        { id: 'ThFEPB24gl8', title: 'Bollywood New Hit Songs' },
+        { id: 'vwbz94JwexM', title: 'Diwali Dhamaka 2024' },
+        { id: 'U0ZoqmyGJo8', title: 'Top hits 2024 playlist' }
       ],
       'Health & Wellness': [
         { id: 'I3OJUwILelU', title: 'Relaxing Music for Stress Relief' },
@@ -496,31 +565,84 @@
         { id: 'zqe-bAgpkWc', title: 'Wall Pilates Day 10' },
         { id: 'KklEpBsrwWU', title: 'Wall Pilates Stretch Day 11' },
         { id: 'i43FBXrOnng', title: 'Wall Pilates Day 12' },
-        { id: 'zWDVxA4Kkd0', title: 'Wall Pilates Day 16' }
+        { id: 'zWDVxA4Kkd0', title: 'Wall Pilates Day 16' },
+        { id: 'vCMNOiQlnD0', title: 'Healthy Habits Kids Songs' },
+        { id: 'eYw55FLf-IA', title: '10 Personal Hygiene Kids' },
+        { id: 'dhpCdqOtuj0', title: 'Wellbeing for Children' },
+        { id: '5QoczeGIKJg', title: 'Wash Your Hands Kids' },
+        { id: 'sed29xY62vE', title: 'Hygiene Habits Dr Panda' }
       ],
-      'Animal Kindness': [
-        { id: 'D4lDPRGDvYo', title: '35 Hero Animals' },
-        { id: 'L-9WYPVxjDw', title: 'Always Be Kind To Animals' }
+      'Food Security': [
+        { id: '_ddcjQf7OY0', title: 'State of Food Security 2023' },
+        { id: 'wu7PjKawjwI', title: 'Food Security Documentary' },
+        { id: 'tnqPcpSgxwU', title: '4 Ways to Sustainable Food' },
+        { id: '4aa6wvJyt1c', title: 'Re-Thinking Food TEDx' }
       ],
       'Free Education': [
         { id: 'OvYCLxqkfvY', title: 'Who Moved My Cheese' },
+        { id: 'i3FiAbJiDyg', title: 'Audiobook Escaping Build Trap' },
+        { id: 'NWGDXOtPm_Q', title: 'Escaping Build Trap 7 min' },
+        { id: 'MLg8fWk_z_g', title: 'Escaping Build Trap Melissa Perri' },
         { id: 'NhWWvxyQlgc', title: 'Lean Startup Audiobook' },
         { id: 'sobxOzRjAGg', title: 'Lean Startup Summary' },
         { id: 'RSaIOCHbuYw', title: 'Lean Startup Summary 2' },
         { id: 'UMOZZ5uZgxA', title: 'Power of Habit Animated' },
         { id: 'OMbsGBlpP30', title: 'Power of Habit TED' },
-        { id: 'PHuTW5mD02c', title: 'Pyramid Principle McKinsey' },
-        { id: 'eVfmR8IwMlo', title: 'Pyramid Principle How To' },
-        { id: '1y15zjp47KQ', title: 'Pyramid Principle Examples' },
-        { id: 'j4Y3TdVVBCA', title: 'Minto Method Explained' },
-        { id: 'NWGDXOtPm_Q', title: 'Escaping Build Trap 7 min' },
-        { id: 'iabdR7rFJAE', title: 'Escaping Build Trap' },
+        { id: 'rK_Fo0oyhxI', title: 'What is Design Thinking' },
+        { id: 'M_wuUxhPonE', title: 'Logical Thinking Bill Dettmer' },
+        { id: 'gnWj97CEjeo', title: 'What Is Design Thinking 2' },
+        { id: 'OqBuXJQprBw', title: 'Design Thinking for Artists' },
         { id: 'g2ps3Xa9CYo', title: 'Working Backwards' },
         { id: 'uj3AUwOuULU', title: 'Toyota Way' },
         { id: 'C3nYWKKmVSM', title: 'Outcomes over Output' },
-        { id: 'rK_Fo0oyhxI', title: 'What is Design Thinking' },
-        { id: 'gnWj97CEjeo', title: 'What Is Design Thinking 2' },
-        { id: 'OqBuXJQprBw', title: 'Design Thinking for Artists' }
+        { id: '9DKiwAul8k0', title: 'Jira Product Owner' },
+        { id: 'C24k9-8V1xU', title: 'Jira Discovery' },
+        { id: 'eK9CSHFNbZ5Q', title: 'How I became PM' },
+        { id: 'eDVtBleIxag', title: 'Watch Me Build GTM Strategy' },
+        { id: 'F-nZ1dKNkp0', title: 'ChatGPT product marketing' },
+        { id: 'VrwBu8DYWkE', title: 'Brand Strategy 17 min' },
+        { id: 'kfiCwAROGlE', title: 'Squarespace Tutorial' },
+        { id: 'o3HJuPaITWk', title: 'How to Use Slack' },
+        { id: 'pCmh6XaMVxs', title: 'What do I do as PM' },
+        { id: 'cmnFelpvw7c', title: 'How to Make Instagram Reels' },
+        { id: 'n4zMY_a5ZME', title: 'Viral Instagram Reels' },
+        { id: '-jbjQW6XuDs', title: '5 Ways Grow Social Media' },
+        { id: 'PKUn7wU5sIc', title: 'Social Media Strategy' },
+        { id: 'Cw22bCgrdLU', title: 'Analytics Top 5 Metrics' },
+        { id: 'LmtineQclr4', title: 'Measure Sentiment Social' },
+        { id: '4ti_uK60nLk', title: 'Marketing Plan Step by Step' },
+        { id: 'ONAvPYV0GZk', title: 'Printful Print on Demand' },
+        { id: '56GWwmUla4k', title: 'Printful Promo Maker' },
+        { id: 'rTbQxyou-cg', title: 'Crowdfire Getting Started' },
+        { id: 'XZ15VehMa7U', title: 'AB Testing Marketing' },
+        { id: 'Kkao9nsOnfY', title: 'Color Psychology Emotions' },
+        { id: 'IrJ1cNIfmsk', title: 'Market Segmentation' },
+        { id: 'Tu1wqGVoYiU', title: 'Social Media Playbook D2C' },
+        { id: 'mdi477PWx5E', title: 'BUS123 Chapter 01 Investment' },
+        { id: 'qGm5HUsPX1g', title: 'BUS121 Chapter 1 Personal Finance' },
+        { id: '0VuzqvaeVAs', title: 'BUS121 Goal Setting Time Value' },
+        { id: 'Z1wuoTb97s8', title: 'BUS121 Career Planning' }
+      ],
+      'World Peace': [
+        { id: 'McdVlO0K1Qc', title: 'World Peace Playlist' },
+        { id: 'ut3WhMeEPt8', title: 'World Peace TEDx Talk' },
+        { id: 'KuKzq9EDt-0', title: 'Global Citizenship Education' }
+      ],
+      'Human Dignity': [
+        { id: 'D9Ihs241zeg', title: 'Chimamanda Ngozi Adichie TED Talk' },
+        { id: 'OF1MOQuJGSE', title: 'Human Dignity Organizational' },
+        { id: 'RwSYrsjTiW4', title: 'Cultures of the World' },
+        { id: 'qCo3wSGYRbQ', title: 'Gestures Around the World' },
+        { id: 'ekHpCUwXX_M', title: 'Greetings Around the World' },
+        { id: 'frPUBM6Ck8w', title: 'Amazing Cultures Revealed' },
+        { id: 'V5np5JRXlU4', title: 'Talking to Nesrine Scrum Master' },
+        { id: 'bhm3bhjF4NY', title: 'Talking to Perrin Scrum' },
+        { id: 'eHJLuRzRcS4', title: 'Demystifying Virtual Agile' },
+        { id: 'Tp6G9np_Ah0', title: 'Developing Relationships Analytics' }
+      ],
+      'Animal Kindness': [
+        { id: 'D4lDPRGDvYo', title: '35 Hero Animals' },
+        { id: 'L-9WYPVxjDw', title: 'Always Be Kind To Animals' }
       ],
       'Innovation': [
         { id: 'bgPuPSPZe2U', title: 'Learn AWS' },
@@ -531,23 +653,35 @@
         { id: 'UB1O30fR-EE', title: 'HTML Crash Course' },
         { id: 'yfoY53QXEnI', title: 'CSS Crash Course' },
         { id: 'W6NZfCO5SIk', title: 'JavaScript in 1 Hour' },
-        { id: 'QNdiGZFaUFs', title: 'Intro to Databricks' }
+        { id: 'QNdiGZFaUFs', title: 'Intro to Databricks' },
+        { id: '-Ay9RNm6OZY', title: 'How To Return HTML AWS Lambda' },
+        { id: '6csb-H3ZB3k', title: 'Azure Key Vault Secrets' },
+        { id: '7fsIwWheyDk', title: 'Deploy Azure Data Factory' },
+        { id: 'VegDvRLVlOI', title: 'Built Website 10 Min HTML CSS' },
+        { id: 'srvUrASNj0s', title: 'Responsive Web Design' },
+        { id: '8jZx_ufPTV4', title: 'Java and Docker' }
       ],
       'Payment Equity': [
         { id: 'ck-LbFagYD4', title: 'Democratization of Finance Yale' },
         { id: '4q_jVu5T80g', title: 'Dan Schulman PayPal Goldman Sachs' },
         { id: 'V4emrerqbS0', title: 'Democratizing the Economy' }
       ],
-      'Environment': [
-        { id: 'x3Q9zT6t4eU', title: 'First Blush in the Snow' },
-        { id: '67yORnjaDjY', title: 'San Jacinto Nature Documentary' },
-        { id: 'JRDtW_XCqb4', title: 'Backpacking Yosemite' },
-        { id: 'UwJotLZ_NgY', title: 'San Gorgonio Nature Documentary' },
-        { id: 'LQZ9BPSS1_I', title: 'Ultra-Processed Food Documentary' }
-      ],
       'Spiritual Growth': [
         { id: 'zXW_t42ILiA', title: 'Prayer is Answered' },
         { id: 'X9WaO6V1id4', title: 'William Ackerman Collection' }
+      ],
+      'Environment': [
+        { id: 'gCYBFD1uZFI', title: 'Next 60 seconds' },
+        { id: 'OaJNVCTiwWU', title: 'October 14 2024' },
+        { id: 'vkW8IfQzy4w', title: 'November 23 2023' },
+        { id: 'SREssWupv2A', title: 'December 18 2023' },
+        { id: 'ySIKDSXapf4', title: 'March 20 2024' },
+        { id: 'V0e46OzyaVY', title: 'Next 30 seconds' },
+        { id: 'LQZ9BPSS1_I', title: 'Ultra-Processed Food Documentary' },
+        { id: 'x3Q9zT6t4eU', title: 'First Blush in the Snow' },
+        { id: '67yORnjaDjY', title: 'San Jacinto Nature Documentary' },
+        { id: 'JRDtW_XCqb4', title: 'Backpacking Yosemite' },
+        { id: 'UwJotLZ_NgY', title: 'San Gorgonio Nature Documentary' }
       ]
     };
 
@@ -555,13 +689,21 @@
     (function() {
       const videoGrid = document.getElementById('videoGrid');
       const filterControls = document.getElementById('filterControls');
-      let activeFilter = 'all';
+      let activeFilter = 'Food Security';
+      let loadedVideos = {};
 
       if (!videoGrid || !filterControls) {
         return;
       }
 
       // Create filter buttons
+      const allBtn = document.createElement('button');
+      allBtn.className = 'filter-btn';
+      allBtn.textContent = 'All Videos';
+      allBtn.dataset.filter = 'all';
+      allBtn.addEventListener('click', () => filterVideos('all'));
+      filterControls.appendChild(allBtn);
+
       Object.keys(videosByCategory).forEach(category => {
         const btn = document.createElement('button');
         btn.className = 'filter-btn';
@@ -570,11 +712,13 @@
         btn.addEventListener('click', () => filterVideos(category));
         filterControls.appendChild(btn);
       });
-      // Set default active filter
+
+      // Set default active filter to Food Security
       const defaultBtn = document.querySelector('[data-filter="Food Security"]');
       if (defaultBtn) {
         defaultBtn.classList.add('active');
       }
+
       function renderVideos(category = 'Food Security') {
         videoGrid.innerHTML = '';
         let videoCount = 0;
@@ -585,23 +729,25 @@
               const card = document.createElement('div');
               card.className = 'video-card fade-in-up';
               card.dataset.category = cat;
+              card.dataset.video-id = video.id;
+              
+              const thumbnailUrl = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+              
               card.innerHTML = `
                 <div class="video-thumbnail">
-                  <iframe 
-                    width="560" 
-                    height="315" 
-                    src="https://www.youtube.com/embed/${video.id}?rel=0" 
-                    title="${video.title}"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen
-                    loading="lazy">
-                  </iframe>
+                  <img src="${thumbnailUrl}" alt="${video.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                  <div class="video-play-button"></div>
                 </div>
                 <div class="video-info">
                   <span class="video-category">${cat}</span>
                   <div class="video-title">${video.title}</div>
                 </div>
               `;
+
+              card.addEventListener('click', () => {
+                playVideo(card, video.id, video.title);
+              });
+
               videoGrid.appendChild(card);
               videoCount++;
             });
@@ -611,6 +757,21 @@
         if (videoCount === 0) {
           videoGrid.innerHTML = '<div class="no-results">No videos found in this category.</div>';
         }
+      }
+
+      function playVideo(card, videoId, title) {
+        const thumbnail = card.querySelector('.video-thumbnail');
+        thumbnail.innerHTML = `
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1" 
+            title="${title}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        `;
+        loadedVideos[videoId] = true;
       }
 
       function filterVideos(category) {
@@ -628,7 +789,7 @@
         renderVideos(category);
       }
 
-      renderVideos('World Peace');
+      renderVideos('Food Security');
     })();
 
     const starCanvas = document.getElementById('starfieldCanvas');
