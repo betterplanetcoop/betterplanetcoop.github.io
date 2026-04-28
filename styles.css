@@ -286,15 +286,16 @@ header {
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   padding: var(--spacing-md) 0;
+  gap: var(--spacing-sm);
 }
 
 .logo {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
+    justify-content: center;
     font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
@@ -303,7 +304,7 @@ header {
   }
 
   .logo img {
-    height: 120px;
+    height: 240px;
     width: auto;
     display: block;
   }
@@ -312,6 +313,8 @@ header {
   list-style: none;
   gap: var(--spacing-lg);
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
