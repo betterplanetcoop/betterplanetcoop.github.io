@@ -88,58 +88,72 @@
 
     .sky-background .cloud {
       position: absolute;
-      background: #fff;
-      border-radius: 60px;
-      filter: blur(0.5px);
-      opacity: 0.95;
+      background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
+      border-radius: 50%;
+      filter: blur(15px);
+      opacity: 0.7;
+      box-shadow: 
+        inset -50px -30px 60px rgba(0, 0, 0, 0.15),
+        inset 50px 30px 60px rgba(255, 255, 255, 0.4);
     }
 
     .sky-background .cloud::before,
     .sky-background .cloud::after {
       content: '';
       position: absolute;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.5);
       border-radius: 50%;
+      filter: blur(20px);
     }
 
     .sky-background .cloud::before {
-      width: 120px;
-      height: 70px;
-      top: -28px;
-      left: 20px;
+      width: 300px;
+      height: 180px;
+      top: -60px;
+      left: 10px;
     }
 
     .sky-background .cloud::after {
-      width: 140px;
-      height: 80px;
-      top: 10px;
-      left: 80px;
+      width: 280px;
+      height: 160px;
+      top: 30px;
+      left: 180px;
     }
 
     .cloud-1 {
-      top: 18%;
-      left: 110%;
-      width: 220px;
-      height: 70px;
-      animation: cloudDrift 11s linear infinite;
+      top: 10%;
+      left: 100%;
+      width: 800px;
+      height: 250px;
+      animation: cloudDrift 180s linear infinite;
+      opacity: 0.6;
     }
 
     .cloud-2 {
-      top: 75px;
-      left: 135%;
-      width: 180px;
-      height: 60px;
-      animation: cloudDrift 13.6s linear infinite;
-      opacity: 0.92;
+      top: 40px;
+      left: 120%;
+      width: 700px;
+      height: 220px;
+      animation: cloudDrift 220s linear infinite;
+      opacity: 0.5;
     }
 
     .cloud-3 {
-      top: 135px;
-      left: 125%;
-      width: 260px;
-      height: 88px;
-      animation: cloudDrift 12.4s linear infinite;
-      opacity: 0.88;
+      top: 100px;
+      left: 110%;
+      width: 900px;
+      height: 280px;
+      animation: cloudDrift 200s linear infinite;
+      opacity: 0.65;
+    }
+
+    .cloud-4 {
+      top: 160px;
+      left: 130%;
+      width: 750px;
+      height: 240px;
+      animation: cloudDrift 240s linear infinite;
+      opacity: 0.55;
     }
 
     @keyframes cloudDrift {
@@ -147,7 +161,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(-260%);
+        transform: translateX(-100vw);
       }
     }
 
@@ -158,6 +172,18 @@
       position: relative;
       overflow: hidden;
       z-index: 1;
+    }
+
+    .video-section-dark h1 {
+      color: white;
+    }
+
+    .video-section-dark h1 + p {
+      color: white;
+    }
+
+    .btn-primary {
+      color: white !important;
     }
 
     .starfield-canvas {
@@ -318,6 +344,7 @@
       <div class="cloud cloud-1"></div>
       <div class="cloud cloud-2"></div>
       <div class="cloud cloud-3"></div>
+      <div class="cloud cloud-4"></div>
     </div>
     <div class="container">
       <nav class="navbar">
