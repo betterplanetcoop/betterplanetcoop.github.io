@@ -54,7 +54,68 @@
       font-size: 0.9rem;
       margin-bottom: var(--spacing-md);
     }
-    
+
+    .logo img {
+      height: 280px;
+      width: auto;
+      display: block;
+    }
+
+    .tv-wave-banner {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(180deg, #bce0ff 0%, #7cc4ff 45%, #1f5dbf 100%);
+      overflow: hidden;
+      margin-bottom: calc(var(--spacing-2xl) * -0.5);
+    }
+
+    .tv-wave-banner svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .tv-wave-banner .wave {
+      animation: waveMove 10s ease-in-out infinite;
+      opacity: 0.9;
+    }
+
+    .tv-wave-banner .wave.front {
+      animation-duration: 8s;
+      opacity: 1;
+    }
+
+    @keyframes waveMove {
+      0%, 100% {
+        transform: translateX(0) translateY(0);
+      }
+      50% {
+        transform: translateX(-20px) translateY(4px);
+      }
+    }
+
+    .video-section-dark {
+      background: #000000;
+      padding-top: calc(var(--spacing-2xl) + 80px);
+      padding-bottom: var(--spacing-2xl);
+      position: relative;
+      z-index: 1;
+    }
+
+    .video-section-dark::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 140px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+      pointer-events: none;
+    }
+
     /* Filter Controls */
     .filter-controls {
       display: flex;
@@ -66,10 +127,10 @@
     
     .filter-btn {
       padding: var(--spacing-sm) var(--spacing-lg);
-      border: 2px solid var(--color-border);
+      border: 1px solid rgba(255, 255, 255, 0.75);
       border-radius: var(--radius-md);
-      background: white;
-      color: var(--color-text-dark);
+      background: transparent;
+      color: white;
       font-weight: 500;
       cursor: pointer;
       transition: all var(--transition-base);
@@ -77,14 +138,15 @@
     }
     
     .filter-btn:hover {
-      border-color: var(--color-teal);
-      color: var(--color-teal);
+      border-color: rgba(255, 255, 255, 1);
+      color: white;
+      background: rgba(255, 255, 255, 0.08);
     }
     
     .filter-btn.active {
-      background: var(--color-forest-green);
+      background: rgba(255, 255, 255, 0.15);
       color: white;
-      border-color: var(--color-forest-green);
+      border-color: rgba(255, 255, 255, 1);
     }
     
     /* Video Grid */
@@ -93,6 +155,7 @@
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: var(--spacing-lg);
       margin-bottom: var(--spacing-2xl);
+      padding: var(--spacing-lg) 0;
     }
     
     @media (max-width: 1024px) {
@@ -108,16 +171,17 @@
     }
     
     .video-card {
-      background: white;
+      background: #1a1a1a;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.4);
       transition: all var(--transition-base);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
     
     .video-card:hover {
       transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.55);
     }
     
     .video-thumbnail {
@@ -139,6 +203,7 @@
     
     .video-info {
       padding: var(--spacing-md);
+      color: white;
     }
     
     .video-category {
@@ -155,7 +220,7 @@
     .video-title {
       font-size: 1rem;
       font-weight: 600;
-      color: var(--color-forest-green);
+      color: white;
       line-height: 1.4;
       margin-bottom: var(--spacing-sm);
       display: -webkit-box;
@@ -199,9 +264,16 @@
     </div>
   </header>
 
+  <div class="tv-wave-banner" aria-hidden="true">
+    <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+      <path class="wave back" d="M0,100 C300,180 600,20 900,100 C1050,145 1200,100 1200,100 L1200,200 L0,200 Z" fill="rgba(255,255,255,0.18)" />
+      <path class="wave front" d="M0,120 C250,60 500,180 750,100 C1000,20 1200,150 1200,150 L1200,200 L0,200 Z" fill="rgba(255,255,255,0.32)" />
+    </svg>
+  </div>
+
   <!-- Main Content -->
   <main>
-    <section class="section">
+    <section class="section video-section-dark">
       <div class="container">
         <!-- Page Header -->
         <div class="section-header">
