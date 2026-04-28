@@ -384,10 +384,14 @@
     };
 
     // Initialize video grid and filters
-    document.addEventListener('DOMContentLoaded', function() {
+    (function() {
       const videoGrid = document.getElementById('videoGrid');
       const filterControls = document.getElementById('filterControls');
       let activeFilter = 'all';
+
+      if (!videoGrid || !filterControls) {
+        return;
+      }
 
       // Create filter buttons
       Object.keys(videosByCategory).forEach(category => {
@@ -417,7 +421,7 @@
                     src="https://www.youtube.com/embed/${video.id}?rel=0" 
                     title="${video.title}"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen="">
+                    allowfullscreen>
                   </iframe>
                 </div>
                 <div class="video-info">
@@ -439,18 +443,20 @@
       function filterVideos(category) {
         activeFilter = category;
         
-        // Update active button
         document.querySelectorAll('.filter-btn').forEach(btn => {
           btn.classList.remove('active');
         });
-        document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+
+        const activeBtn = document.querySelector(`[data-filter="${category}"]`);
+        if (activeBtn) {
+          activeBtn.classList.add('active');
+        }
 
         renderVideos(category);
       }
 
-      // Initial render
       renderVideos();
-    });
+    })();
   </script>
 </body>
 </html>
