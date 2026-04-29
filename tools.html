@@ -355,7 +355,10 @@
       position: relative;
       z-index: 1;
       overflow: hidden;
-      background: linear-gradient(135deg, #ffb347 0%, #ffd700 100%);
+      background-image: url('sunny-header.png');
+      background-size: 150%;
+      background-position: 0% 50%;
+      animation: bokehdrift 25s ease-in-out infinite alternate;
     }
 
     header .container {
@@ -363,77 +366,9 @@
       z-index: 2;
     }
 
-    .bokeh-background {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      z-index: 0;
-      background: linear-gradient(135deg, #ffb347 0%, #ffd700 100%);
-    }
-
-    .bokeh-circle {
-      position: absolute;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.5), rgba(244, 162, 97, 0.2));
-      border-radius: 50%;
-      filter: blur(35px);
-      opacity: 0.7;
-    }
-
-    .bokeh-1 {
-      width: 140px;
-      height: 140px;
-      top: 10%;
-      left: 8%;
-      animation: bokehdrift 24s ease-in-out infinite;
-    }
-
-    .bokeh-2 {
-      width: 190px;
-      height: 190px;
-      top: 20%;
-      right: 12%;
-      animation: bokehdrift 28s ease-in-out infinite reverse;
-      filter: blur(45px);
-      opacity: 0.5;
-    }
-
-    .bokeh-3 {
-      width: 110px;
-      height: 110px;
-      bottom: 25%;
-      left: 18%;
-      animation: bokehdrift 20s ease-in-out infinite;
-      filter: blur(32px);
-      opacity: 0.6;
-    }
-
-    .bokeh-4 {
-      width: 160px;
-      height: 160px;
-      top: 35%;
-      right: 8%;
-      animation: bokehdrift 26s ease-in-out infinite;
-      filter: blur(40px);
-      opacity: 0.55;
-    }
-
-    .bokeh-5 {
-      width: 100px;
-      height: 100px;
-      bottom: 20%;
-      right: 22%;
-      animation: bokehdrift 22s ease-in-out infinite reverse;
-      filter: blur(35px);
-      opacity: 0.65;
-    }
-
     @keyframes bokehdrift {
-      0%, 100% {
-        transform: translateY(0) translateX(0);
-      }
-      50% {
-        transform: translateY(-25px) translateX(15px);
-      }
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
   </style>
 </head>
