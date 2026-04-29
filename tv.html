@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BetterPlanet TV | Mission-Driven Entertainment</title>
-  <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'>
+  <link rel='icon' type='image/png' href='favicon.png'>
   <link rel="stylesheet" href="styles.css">
   <style>
     .featured-section {
@@ -72,7 +72,7 @@
       position: relative;
       z-index: 1;
       overflow: hidden;
-      background: #87CEEB;
+      background: linear-gradient(135deg, #ffd700 0%, #f4d03f 50%, #f39c12 100%);
       min-height: 280px;
     }
 
@@ -81,89 +81,76 @@
       z-index: 2;
     }
 
-    .sky-background {
+    .bokeh-background {
       position: absolute;
       inset: 0;
       overflow: hidden;
       z-index: 0;
-      background: linear-gradient(180deg, #87CEEB 0%, #b4e1ff 55%, #e6f6ff 100%);
+      background: linear-gradient(135deg, #ffe680 0%, #ffd700 50%, #f4d03f 100%);
     }
 
-    .sky-background .cloud {
+    .bokeh-circle {
       position: absolute;
-      background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.6), rgba(243, 156, 18, 0.3));
       border-radius: 50%;
-      filter: blur(15px);
-      opacity: 0.7;
-      box-shadow: 
-        inset -50px -30px 60px rgba(0, 0, 0, 0.15),
-        inset 50px 30px 60px rgba(255, 255, 255, 0.4);
+      filter: blur(40px);
+      opacity: 0.6;
     }
 
-    .sky-background .cloud::before,
-    .sky-background .cloud::after {
-      content: '';
-      position: absolute;
-      background: radial-gradient(ellipse, rgba(255, 255, 255, 0.8), transparent);
-      border-radius: 50%;
-      filter: blur(20px);
+    .bokeh-1 {
+      width: 150px;
+      height: 150px;
+      top: 5%;
+      left: 10%;
+      animation: bokehdrift 20s ease-in-out infinite;
     }
 
-    .sky-background .cloud::before {
-      width: 180px;
-      height: 100px;
-      top: -40px;
-      left: -30px;
-    }
-
-    .sky-background .cloud::after {
+    .bokeh-2 {
       width: 200px;
-      height: 110px;
-      top: 20px;
-      left: 120px;
-    }
-
-    .cloud-1 {
+      height: 200px;
       top: 15%;
-      left: 130%;
-      width: 280px;
-      height: 100px;
-      animation: cloudDrift 45s linear infinite;
+      right: 15%;
+      animation: bokehdrift 25s ease-in-out infinite reverse;
+      filter: blur(50px);
+      opacity: 0.5;
     }
 
-    .cloud-2 {
-      top: 60px;
-      left: 155%;
-      width: 240px;
-      height: 90px;
-      animation: cloudDrift 55s linear infinite;
-      opacity: 0.85;
-    }
-
-    .cloud-3 {
-      top: 130px;
-      left: 145%;
-      width: 320px;
+    .bokeh-3 {
+      width: 120px;
       height: 120px;
-      animation: cloudDrift 50s linear infinite;
-      opacity: 0.8;
+      bottom: 20%;
+      left: 20%;
+      animation: bokehdrift 22s ease-in-out infinite;
+      filter: blur(35px);
+      opacity: 0.55;
     }
 
-    .cloud-4 {
-      top: 180px;
-      left: 160%;
-      width: 260px;
-      height: 95px;
-      animation: cloudDrift 60s linear infinite;
-      opacity: 0.75;
+    .bokeh-4 {
+      width: 180px;
+      height: 180px;
+      top: 30%;
+      right: 5%;
+      animation: bokehdrift 28s ease-in-out infinite;
+      filter: blur(45px);
+      opacity: 0.5;
     }
 
-    @keyframes cloudDrift {
-      0% {
-        transform: translateX(0);
+    .bokeh-5 {
+      width: 100px;
+      height: 100px;
+      bottom: 15%;
+      right: 25%;
+      animation: bokehdrift 24s ease-in-out infinite reverse;
+      filter: blur(35px);
+      opacity: 0.6;
+    }
+
+    @keyframes bokehdrift {
+      0%, 100% {
+        transform: translateY(0) translateX(0);
       }
-      100% {
-        transform: translateX(-150vw);
+      50% {
+        transform: translateY(-30px) translateX(20px);
       }
     }
 
@@ -384,11 +371,12 @@
 <body>
   <!-- Navigation -->
   <header>
-    <div class="sky-background" aria-hidden="true">
-      <div class="cloud cloud-1"></div>
-      <div class="cloud cloud-2"></div>
-      <div class="cloud cloud-3"></div>
-      <div class="cloud cloud-4"></div>
+    <div class="bokeh-background" aria-hidden="true">
+      <div class="bokeh-circle bokeh-1"></div>
+      <div class="bokeh-circle bokeh-2"></div>
+      <div class="bokeh-circle bokeh-3"></div>
+      <div class="bokeh-circle bokeh-4"></div>
+      <div class="bokeh-circle bokeh-5"></div>
     </div>
     <div class="container">
       <nav class="navbar">
