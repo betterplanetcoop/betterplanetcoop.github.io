@@ -68,125 +68,80 @@
       background: transparent;
     }
 
+    /* Zone 1: Golden Bokeh Header */
     header {
       position: relative;
-      z-index: 1;
+      z-index: 10;
       overflow: hidden;
-      background: linear-gradient(135deg, #ffd700 0%, #f4d03f 50%, #f39c12 100%);
-      min-height: 280px;
+      background: linear-gradient(135deg, #ffb347 0%, #ffd700 100%);
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1;
     }
 
     header .container {
       position: relative;
-      z-index: 2;
-    }
-
-    .bokeh-background {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      z-index: 0;
-      background: linear-gradient(135deg, #ffe680 0%, #ffd700 50%, #f4d03f 100%);
-    }
-
-    .bokeh-circle {
-      position: absolute;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.6), rgba(243, 156, 18, 0.3));
-      border-radius: 50%;
-      filter: blur(40px);
-      opacity: 0.6;
-    }
-
-    .bokeh-1 {
-      width: 150px;
-      height: 150px;
-      top: 5%;
-      left: 10%;
-      animation: bokehdrift 20s ease-in-out infinite;
-    }
-
-    .bokeh-2 {
-      width: 200px;
-      height: 200px;
-      top: 15%;
-      right: 15%;
-      animation: bokehdrift 25s ease-in-out infinite reverse;
-      filter: blur(50px);
-      opacity: 0.5;
-    }
-
-    .bokeh-3 {
-      width: 120px;
-      height: 120px;
-      bottom: 20%;
-      left: 20%;
-      animation: bokehdrift 22s ease-in-out infinite;
-      filter: blur(35px);
-      opacity: 0.55;
-    }
-
-    .bokeh-4 {
-      width: 180px;
-      height: 180px;
-      top: 30%;
-      right: 5%;
-      animation: bokehdrift 28s ease-in-out infinite;
-      filter: blur(45px);
-      opacity: 0.5;
-    }
-
-    .bokeh-5 {
-      width: 100px;
-      height: 100px;
-      bottom: 15%;
-      right: 25%;
-      animation: bokehdrift 24s ease-in-out infinite reverse;
-      filter: blur(35px);
-      opacity: 0.6;
-    }
-
-    @keyframes bokehdrift {
-      0%, 100% {
-        transform: translateY(0) translateX(0);
-      }
-      50% {
-        transform: translateY(-30px) translateX(20px);
-      }
-    }
-
-    .video-section-dark {
-      background: #0a0a0f;
-      padding-top: 0;
-      padding-bottom: var(--spacing-2xl);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .video-section-dark::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 200px;
-      background: linear-gradient(to bottom, rgba(135, 206, 235, 0.3), rgba(10, 10, 15, 0.8));
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .starfield-canvas {
-      position: absolute;
-      inset: 0;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 100%;
-      height: 100%;
-      z-index: 1;
-      display: block;
     }
 
-    .video-section-dark .container {
-      position: relative;
-      z-index: 3;
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .navbar .logo {
+      order: -1;
+      margin-right: 0;
+    }
+
+    header .hamburger,
+    .nav-links {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      header .hamburger {
+        display: flex;
+      }
+      
+      .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 100px;
+        flex-direction: column;
+        background-color: rgba(45, 106, 79, 0.95);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        z-index: 8;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-links li {
+        padding: var(--spacing-md) 0;
+      }
     }
 
     /* Filter Controls */
@@ -370,14 +325,8 @@
 </head>
 <body>
   <!-- Navigation -->
-  <header>
-    <div class="bokeh-background" aria-hidden="true">
-      <div class="bokeh-circle bokeh-1"></div>
-      <div class="bokeh-circle bokeh-2"></div>
-      <div class="bokeh-circle bokeh-3"></div>
-      <div class="bokeh-circle bokeh-4"></div>
-      <div class="bokeh-circle bokeh-5"></div>
-    </div>
+  <header id="bokehHeader">
+    <canvas id="bokehCanvas" aria-hidden="true"></canvas>
     <div class="container">
       <nav class="navbar">
         <a href="index.html" class="logo"><img src="Logo-Main.png" alt="BetterPlanet Co-op logo"></a>
@@ -397,6 +346,22 @@
       </nav>
     </div>
   </header>
+
+  <!-- Wave Divider Transition -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#0a0a0f;stop-opacity:0.1" />
+          <stop offset="50%" style="stop-color:#0a0a0f;stop-opacity:0.5" />
+          <stop offset="100%" style="stop-color:#0a0a0f;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <path d="M0,40 Q150,80 300,60 T600,80 T900,50 T1200,70 L1200,120 L0,120 Z" fill="url(#waveGradient)" opacity="0.8"/>
+      <path d="M0,50 Q200,90 400,50 T800,90 T1200,60 L1200,120 L0,120 Z" fill="#0a0a0f" opacity="0.3"/>
+      <path d="M0,60 Q250,100 500,55 T1000,95 T1200,65 L1200,120 L0,120 Z" fill="#0a0a0f" opacity="0.15"/>
+    </svg>
+  </div>
 
   <!-- Main Content -->
   <main>
@@ -479,7 +444,87 @@
 
   <script src="script.js"></script>
   <script>
-    // Video data organized by category - COMPREHENSIVE LIBRARY
+    // Canvas-based bokeh animation for header (Zone 1)
+    const bokehCanvas = document.getElementById('bokehCanvas');
+    if (bokehCanvas) {
+      const bokehCtx = bokehCanvas.getContext('2d');
+      const bokehCircles = [];
+      const bokehCount = 15;
+      const bokehColors = ['#ffd700', '#f4a261', '#ffe680'];
+      let bokehCanvasWidth = 0;
+      let bokehCanvasHeight = 0;
+      let animationTime = 0;
+
+      function resizeBokehCanvas() {
+        bokehCanvasWidth = bokehCanvas.clientWidth;
+        bokehCanvasHeight = bokehCanvas.clientHeight;
+        bokehCanvas.width = bokehCanvasWidth * devicePixelRatio;
+        bokehCanvas.height = bokehCanvasHeight * devicePixelRatio;
+        bokehCtx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+      }
+
+      function createBokehCircles() {
+        bokehCircles.length = 0;
+        for (let i = 0; i < bokehCount; i++) {
+          bokehCircles.push({
+            x: Math.random() * bokehCanvasWidth,
+            y: Math.random() * bokehCanvasHeight,
+            radius: Math.random() * 50 + 40,
+            color: bokehColors[Math.floor(Math.random() * bokehColors.length)],
+            opacity: Math.random() * 0.3 + 0.3,
+            driftX: (Math.random() * 0.4) - 0.2,
+            driftY: (Math.random() * 0.6) - 0.3,
+            duration: Math.random() * 8000 + 6000,
+            startTime: Math.random() * 2000
+          });
+        }
+      }
+
+      function drawBokehCircles() {
+        bokehCtx.clearRect(0, 0, bokehCanvasWidth, bokehCanvasHeight);
+        
+        bokehCircles.forEach(circle => {
+          const elapsed = (animationTime - circle.startTime) % circle.duration;
+          const progress = elapsed / circle.duration;
+          
+          const baseY = circle.y - progress * 80;
+          const oscillateX = Math.sin(progress * Math.PI * 2) * 40;
+          
+          bokehCtx.globalAlpha = circle.opacity * (0.5 + Math.sin(progress * Math.PI * 2) * 0.5);
+          
+          const gradient = bokehCtx.createRadialGradient(
+            circle.x + oscillateX, baseY, circle.radius * 0.2,
+            circle.x + oscillateX, baseY, circle.radius
+          );
+          gradient.addColorStop(0, `rgba(255, 255, 255, 0.8)`);
+          gradient.addColorStop(0.4, circle.color.replace('#', 'rgba(') + ', 0.6)');
+          gradient.addColorStop(1, circle.color.replace('#', 'rgba(') + ', 0)');
+          
+          bokehCtx.fillStyle = gradient;
+          bokehCtx.filter = 'blur(25px)';
+          bokehCtx.beginPath();
+          bokehCtx.arc(circle.x + oscillateX, baseY, circle.radius, 0, Math.PI * 2);
+          bokehCtx.fill();
+          bokehCtx.filter = 'none';
+        });
+        
+        bokehCtx.globalAlpha = 1;
+        animationTime += 16;
+        requestAnimationFrame(drawBokehCircles);
+      }
+
+      window.addEventListener('resize', () => {
+        resizeBokehCanvas();
+        createBokehCircles();
+      });
+
+      resizeBokehCanvas();
+      createBokehCircles();
+      drawBokehCircles();
+    }
+
+    // Video filtering and rendering
+
     const videosByCategory = {
       'Music & The Arts': [
         { id: 'G04GGB1wh_s', title: 'Bollywood Music Compilation' },
