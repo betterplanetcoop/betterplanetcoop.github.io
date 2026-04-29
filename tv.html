@@ -11,7 +11,7 @@
       background: linear-gradient(135deg, rgba(45, 106, 79, 0.1), rgba(0, 180, 160, 0.1));
       border-radius: var(--radius-lg);
       padding: var(--spacing-xl);
-      margin-bottom: var(--spacing-md);
+      margin-bottom: var(--spacing-2xl);
     }
     
     .featured-heading {
@@ -88,7 +88,6 @@
       0% { background-position: 0% 50%; }
       100% { background-position: 100% 50%; }
     }
-    @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
     .video-section-dark {
       background: #0a0a0f;
@@ -125,9 +124,7 @@
       z-index: 3;
     }
 
-   <!-- Filter Controls -->
-        <div class="filter-controls" id="filterControls">
-        </div>
+    /* Filter Controls */
     .filter-controls {
       display: flex;
       flex-wrap: wrap;
@@ -343,29 +340,33 @@
       <div class="container">
         
         <!-- Offerings Section -->
-        <div style="overflow: hidden; white-space: nowrap; margin-bottom: var(--spacing-md);"><p style="display: inline-block; color: rgba(255, 255, 255, 0.9); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.05em; animation: marquee 20s linear infinite;">📺 Pick Your Channel &nbsp;&nbsp;&nbsp;〰️&nbsp;&nbsp;&nbsp; Change the Narrative &nbsp;&nbsp;&nbsp;〰️&nbsp;&nbsp;&nbsp; Mission-Driven Entertainment &nbsp;&nbsp;&nbsp;〰️&nbsp;&nbsp;&nbsp; Simple Ways to Make the World Better &nbsp;&nbsp;&nbsp;〰️</p></div>
-          <div class="featured-section fade-in-up">
+        <div class="featured-section fade-in-up">
           <div class="featured-cards">
             <div class="featured-card">
               <h3>🌏 30 Days for the Planet</h3>
-              <p>Make small changes to support big environmental sustainability. Learn more </p>
-              <a href="https://www.agenticsgrowthlab.com/30-days-for-the-planet" target="_blank" class="btn btn-secondary" style="background-color: #0099cc; border-color: #0099cc; color: white;">Join Challenge</a>
+              <p>Make small changes to support big environmental sustainability</p>
+              <a href="https://www.agenticsgrowthlab.com/30-days-for-the-planet" target="_blank" class="btn btn-secondary">Join Challenge</a>
             </div>
             <div class="featured-card">
               <h3>Try Gaia</h3>
-              <p>Get quick and easy ways to help the environment. Agentic Environmental Sustainability Coach</p>
-              <a href="https://www.agenticsgrowthlab.com/30-days-for-the-planet" target="_blank" class="btn btn-secondary" style="background-color: #0099cc; border-color: #0099cc; color: white;">Try Gaia</a>
+              <p>Like the fanciest hotels, meet your favorite new Chief of Staff. Agentic Environmental Sustainability Coach</p>
+              <a href="https://www.agenticsgrowthlab.com/30-days-for-the-planet" target="_blank" class="btn btn-secondary">Try Gaia</a>
             </div>
             <div class="featured-card">
-              <h3> 🌞Try Sol</h3>
-              <p>Feel the Relief. Like the fanciest hotels, meet your favorite new Chief of Staff</p>
-              <a href="https://www.agenticsgrowthlab.com/karmabuzz" target="_blank" class="btn btn-secondary" style="background-color: #0099cc; border-color: #0099cc; color: white;">Try Sol</a>
+              <h3>🌏 Try Sol</h3>
+              <p>Feel the Relief. Safe, moral, legal first AI wellness coach</p>
+              <a href="https://www.agenticsgrowthlab.com/karmabuzz" target="_blank" class="btn btn-secondary">Try Sol</a>
             </div>
           </div>
         </div>
 
         <!-- Filter Controls -->
-  
+        <div style="text-align: center; margin-top: var(--spacing-md); margin-bottom: var(--spacing-lg);">
+          <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: var(--spacing-md);">Filter by category:</p>
+        </div>
+        <div class="filter-controls" id="filterControls">
+          <!-- Filter buttons will be added here by JavaScript -->
+        </div>
         
         <!-- Video Grid -->
         <div class="video-grid" id="videoGrid">
